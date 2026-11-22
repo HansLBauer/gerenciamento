@@ -1,6 +1,27 @@
 {
-  "geradoEm": "2026-11-21",
-  "cid": {"registros":14246,"fonte":"DATASUS — tb_cid.txt da Tabela Unificada SIGTAP","competencia":"2026-11","arquivo":"TabelaUnificada_202611_v2611051737.zip","origem":"https://sigtap.datasus.gov.br/","espelho":"https://github.com/RenatoKR/SIGTAP","observacao":"Categorias e subcategorias conforme o cadastro DATASUS desta competência. A busca ignora ponto no código."},
-  "ciap": {"registros":686,"fonte":"Relação entre CIAP2 e CID10 — Integração e-SUS APS PEC","url":"https://integracao.esusaps.bridge.ufsc.tech/ledi/documentacao/referencias/relacao_ciap_cid.html","observacao":"Códigos presentes na relação oficial CIAP/CID do e-SUS APS. Não inclui todos os códigos genéricos de processos da CIAP-2."},
-  "sigtap": {"registros":5068,"fonte":"DATASUS — tb_procedimento.txt","competencia":"2026-11","arquivo":"TabelaUnificada_202611_v2611051737.zip","origem":"https://sigtap.datasus.gov.br/","espelho":"https://github.com/RenatoKR/SIGTAP","observacao":"Catálogo completo da competência indicada, não atualizado automaticamente. Apenas código e descrição; não executa faturamento nem valida compatibilidades."}
+  "geradoEm": "2026-11-22",
+  "cid": {
+    "registros": 14246,
+    "fonte": "DATASUS — tb_cid.txt da Tabela Unificada SIGTAP",
+    "competencia": "2026-11",
+    "arquivo": "TabelaUnificada_202611_v2611051737.zip",
+    "origem": "https://sigtap.datasus.gov.br/",
+    "espelho": "https://github.com/RenatoKR/SIGTAP",
+    "observacao": "Categorias e subcategorias conforme o cadastro DATASUS desta competência. A busca ignora ponto no código."
+  },
+  "ciap": {
+    "registros": 1407,
+    "fonte": "CIAP-2 Brasil, SBMFC/WONCA, segunda edição brasileira (2009), capítulos 10 e 11; descrições complementares e-SUS APS",
+    "url": "https://integracao.esusaps.bridge.ufsc.tech/ledi/documentacao/referencias/relacao_ciap_cid.html",
+    "observacao": "2380 entradas CID-10 com correspondências explícitas do capítulo 11. Códigos específicos têm prioridade sobre a categoria. Asteriscos sem rubrica não geram códigos."
+  },
+  "sigtap": {
+    "registros": 5068,
+    "fonte": "DATASUS — tb_procedimento.txt",
+    "competencia": "2026-11",
+    "arquivo": "TabelaUnificada_202611_v2611051737.zip",
+    "origem": "https://sigtap.datasus.gov.br/",
+    "espelho": "https://github.com/RenatoKR/SIGTAP",
+    "observacao": "Catálogo completo da competência indicada, não atualizado automaticamente. Apenas código e descrição; não executa faturamento nem valida compatibilidades."
+  }
 }

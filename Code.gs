@@ -163,7 +163,7 @@ var UBS = (() => {
     out.bmi = bmi(out.weight, out.height);
     for (const key of ["cid", "ciap", "sigtap"]) {
       requireThat(Array.isArray(raw[key] || []) && (raw[key] || []).length <= 200, "Quantidade de c\xF3digos excedida (200 por quadro).");
-      out[key] = (raw[key] || []).map((x) => ({ code: String(x.code || "").slice(0, 15), label: String(x.label || "").slice(0, 250) }));
+      out[key] = (raw[key] || []).map((x) => ({ code: String(x.code || "").slice(0, 15), label: String(x.label || "").slice(0, 250), ...key === "ciap" && Array.isArray(x.sources) ? { sources: x.sources.filter((v) => typeof v === "string" && v.length <= 15).slice(0, 200), manual: !!x.manual } : {} }));
     }
     return out;
   }
@@ -3690,14 +3690,14 @@ var UBS = (() => {
     p.version++;
     p.applied = [...(p.applied || []).slice(-63), key];
     if (action === "arrive") {
-      queue(p.professionalId, `Seu paciente das ${p.time} chegou!`, `${p.name} j\xE1 est\xE1 presente!`, p.id, key);
+      queue(p.professionalId, p.name, `Seu paciente das ${p.time} chegou!`, p.id, key);
       try {
         flushPush(p.id, true);
       } catch (err) {
       }
     }
     if (action === "undo") queue(p.professionalId, "Marca\xE7\xE3o corrigida pela recep\xE7\xE3o", `${p.name}, ${p.time}: confira a situa\xE7\xE3o atual na agenda.`, p.id);
-    if (action === "ask") queue(p.professionalId, `Paciente das ${p.time} chegou atrasado`, `${p.name}: deseja atend\xEA-lo mesmo assim?`, p.id);
+    if (action === "ask") queue(p.professionalId, p.name, `Seu paciente das ${p.time} chegou atrasado. Deseja atend\xEA-lo?`, p.id);
     if (["accept", "reject"].includes(action)) queue("recepcao", action === "accept" ? "Atendimento autorizado" : "Falta por atraso", `${p.name}, ${p.time}: ${action === "accept" ? "o profissional aceitou o atendimento." : "o profissional recusou o atendimento."}`, p.id);
     put(name, p);
     audit(u, action, p.id);
@@ -3833,7 +3833,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "1.0.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.1.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
