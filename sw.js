@@ -1,6 +1,6 @@
-const CACHE='nova-veneza-shell-e39e0f2c7823';
-self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(["./","./manifest.webmanifest","./icons/icon-192.png","./icons/icon-512.png","./assets/index-BixYfvEJ.css","./assets/index-CGJhmVNg.js","./assets/index-D5Ks2k_p.js"])));});
-self.addEventListener('activate',event=>{event.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))]));});
+const CACHE='nova-veneza-shell-f57e39eb8691';
+self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(["./","./manifest.webmanifest","./icons/icon-192.png","./icons/icon-512.png","./assets/_commonjsHelpers-Cpj98o6Y.js","./assets/html2canvas.esm-B0tyYwQk.js","./assets/index-B9dP2tPK.css","./assets/index-D2_cNBTY.js","./assets/index-DdBV6pZW.js","./assets/index.es-Cuy8HrYm.js","./assets/pdf-C-olXVQ4.js","./assets/purify.es-BhqXAQOW.js","./assets/report-CiJFucux.js"])));});
+self.addEventListener('activate',event=>{event.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('nova-veneza-shell-')&&k!==CACHE).map(k=>caches.delete(k))))]));});
 // Cache somente arquivos públicos do aplicativo. Nunca armazenar APIs, pacientes ou senhas.
 self.addEventListener('fetch',event=>{
  const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin)return;
