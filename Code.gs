@@ -6474,11 +6474,16 @@ var UBS = (() => {
   function storedOrders() {
     return db().getSheetByName(orderTab) ? all(orderTab) : [];
   }
+  function nextWednesday(day) {
+    const date = /* @__PURE__ */ new Date(day + "T00:00:00Z");
+    date.setUTCDate(date.getUTCDate() + ((3 - date.getUTCDay() + 7) % 7 || 7));
+    return date.toISOString().slice(0, 10);
+  }
   function nextCycle(day) {
     return new Date(Date.parse(day) + 14 * 864e5).toISOString().slice(0, 10);
   }
   function orderView(u, id) {
-    var _a;
+    var _a, _b;
     requireThat(canSeeMaterials(u), "Sem acesso aos materiais.");
     const history = storedOrders().sort((a, b) => a.id.localeCompare(b.id));
     const closed = history.filter((o) => o.status !== "open");
@@ -6491,8 +6496,9 @@ var UBS = (() => {
     const from = ((_a = closed.filter((o) => o.id < target).at(-1)) == null ? void 0 : _a.cutoff) || 0;
     const usage = {};
     for (const m of moves.slice(from)) if (["take", "correct"].includes(m.kind)) usage[m.blockId] = (usage[m.blockId] || 0) - m.delta;
+    (_b = order.orderDate) != null ? _b : order.orderDate = order.status === "open" && !order.revision ? nextWednesday(localDate()) : order.id;
     const items = stock(u, moves, history).filter((x) => x.category === "materials");
-    return { order, items, current, latest: latest == null ? void 0 : latest.id, history: closed.map((o) => ({ id: o.id, status: o.status })), balances: order.balances || items.map((i) => i.quantity), usage: order.usage || items.map((i) => usage[i.id] || 0), cutoff: moves.length };
+    return { order, items, current, latest: latest == null ? void 0 : latest.id, history: closed.map((o) => ({ id: o.id, status: o.status, orderDate: o.orderDate || o.id })), balances: order.balances || items.map((i) => i.quantity), usage: order.usage || items.map((i) => usage[i.id] || 0), cutoff: moves.length };
   }
   function orderAction(u, input) {
     const view = orderView(u, input.orderId), o = view.order;
@@ -6502,6 +6508,11 @@ var UBS = (() => {
     const integer = (n) => Number.isSafeInteger(n) && n >= 0;
     if (input.operation === "draft" || input.operation === "close") {
       requireThat(o.status === "open" && o.id === view.current, "Pedido encerrado.");
+      if (input.orderDate !== void 0) {
+        const d = input.orderDate;
+        requireThat(typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d, "Data do pedido inv\xE1lida.");
+        o.orderDate = d;
+      }
       for (const [id, n] of Object.entries(input.requested || {})) {
         requireThat(almox_default.some((i) => i.id === id) && integer(n), "Quantidade solicitada inv\xE1lida.");
         o.requested[id] = n;
@@ -6788,7 +6799,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.11.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.12.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
