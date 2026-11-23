@@ -28,6 +28,19 @@ var UBS = (() => {
     recover: () => recover
   });
 
+  // src/daily-care.js
+  var shortcuts = ["MMG", "CO", "RX Torax AP+P", "Laboratoriais", "Renovo Receita", "ECG", "Colono", "EDA", "USG ABD Total", "USG TV", "MRPA", "Dextro", "LME"];
+  var clean = (code) => String(code).replace(/[^A-Z0-9]/gi, "").toUpperCase();
+  var matches = (items, pattern) => (items || []).some((item) => pattern.test(clean(item.code)));
+  function diabetesFields(info) {
+    return matches(info.ciap, /^(T89|T90|W85)$/) || (info.cid || []).some((item) => {
+      const code = clean(item.code);
+      if (/^(E1[0-4]|O24|P702|N083)/.test(code)) return true;
+      const label = (item.label || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      return /diabet/.test(label) && !/insipid|historia|antecedente|rastreamento|filho de|mae diabet/.test(label);
+    });
+  }
+
   // src/domain.js
   var ROLES = { doctor: "M\xE9dico(a)", nurse: "Enfermeiro(a)", dentist: "Dentista", psychologist: "Psic\xF3logo(a)", manager: "Ger\xEAncia", productivity: "Produtividade", reception: "Recep\xE7\xE3o" };
   var STAFF = [
@@ -165,6 +178,16 @@ var UBS = (() => {
       requireThat(Array.isArray(raw[key] || []) && (raw[key] || []).length <= 200, "Quantidade de c\xF3digos excedida (200 por quadro).");
       out[key] = (raw[key] || []).map((x) => ({ code: String(x.code || "").slice(0, 15), label: String(x.label || "").slice(0, 250), ...key === "ciap" && Array.isArray(x.sources) ? { sources: x.sources.filter((v) => typeof v === "string" && v.length <= 15).slice(0, 200), manual: !!x.manual } : {} }));
     }
+    if (diabetesFields(out)) {
+      if (raw.hba1c !== "" && raw.hba1c != null) {
+        const value = Number(raw.hba1c);
+        requireThat(Number.isFinite(value) && value > 0 && value <= 100, "Informe a glicada como porcentagem entre 0 e 100, maior que zero.");
+        out.hba1c = value;
+      }
+      if (raw.hbaRequested === true || raw.hbaRequested === "on") out.hbaRequested = true;
+      if (raw.footExam === true || raw.footExam === "on") out.footExam = true;
+    }
+    if (Array.isArray(raw.shortcuts)) out.shortcuts = shortcuts.filter((label) => raw.shortcuts.includes(label));
     return out;
   }
 
@@ -204,7 +227,7 @@ var UBS = (() => {
       throw new Error("digestInto() expects output buffer of length at least " + min);
     }
   }
-  function clean(...arrays) {
+  function clean2(...arrays) {
     for (let i = 0; i < arrays.length; i++) {
       arrays[i].fill(0);
     }
@@ -875,7 +898,7 @@ var UBS = (() => {
       const { buffer, view, blockLen, isLE: isLE2 } = this;
       let { pos } = this;
       buffer[pos++] = 128;
-      clean(this.buffer.subarray(pos));
+      clean2(this.buffer.subarray(pos));
       if (this.padOffset > blockLen - pos) {
         this.process(view, 0);
         pos = 0;
@@ -1131,11 +1154,11 @@ var UBS = (() => {
       this.set(A, B, C, D, E, F, G, H);
     }
     roundClean() {
-      clean(SHA256_W);
+      clean2(SHA256_W);
     }
     destroy() {
       this.set(0, 0, 0, 0, 0, 0, 0, 0);
-      clean(this.buffer);
+      clean2(this.buffer);
     }
   };
   var K512 = /* @__PURE__ */ (() => split([
@@ -1328,10 +1351,10 @@ var UBS = (() => {
       this.set(Ah, Al, Bh, Bl, Ch, Cl, Dh, Dl, Eh, El, Fh, Fl, Gh, Gl, Hh, Hl);
     }
     roundClean() {
-      clean(SHA512_W_H, SHA512_W_L);
+      clean2(SHA512_W_H, SHA512_W_L);
     }
     destroy() {
-      clean(this.buffer);
+      clean2(this.buffer);
       this.set(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
   };
@@ -1383,7 +1406,7 @@ var UBS = (() => {
       for (let i = 0; i < pad.length; i++)
         pad[i] ^= 54 ^ 92;
       this.oHash.update(pad);
-      clean(pad);
+      clean2(pad);
     }
     update(buf) {
       aexists(this);
@@ -2797,7 +2820,7 @@ var UBS = (() => {
     }
     HMAC2.destroy();
     HMACTmp.destroy();
-    clean(T, HKDF_COUNTER);
+    clean2(T, HKDF_COUNTER);
     return okm.slice(0, length);
   }
   var hkdf = (hash, ikm, salt, info, length) => expand(hash, extract(hash, ikm, salt), info, length);
@@ -2824,7 +2847,7 @@ var UBS = (() => {
     PRFSalt.destroy();
     if (prfW)
       prfW.destroy();
-    clean(u);
+    clean2(u);
     return DK;
   }
   function pbkdf2(hash, password, salt, opts) {
@@ -2880,7 +2903,7 @@ var UBS = (() => {
   function u32(arr) {
     return new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
   }
-  function clean2(...arrays) {
+  function clean3(...arrays) {
     for (let i = 0; i < arrays.length; i++) {
       arrays[i].fill(0);
     }
@@ -3111,7 +3134,7 @@ var UBS = (() => {
       if (left) {
         ZEROS16.set(data.subarray(blocks * BLOCK_SIZE));
         this._updateBlock(ZEROS32[0], ZEROS32[1], ZEROS32[2], ZEROS32[3]);
-        clean2(ZEROS32);
+        clean3(ZEROS32);
       }
       return this;
     }
@@ -3146,7 +3169,7 @@ var UBS = (() => {
       abytes2(key);
       const ghKey = _toGHASHKey(copyBytes(key));
       super(ghKey, expectedLength);
-      clean2(ghKey);
+      clean3(ghKey);
     }
     update(data) {
       data = toBytes2(data);
@@ -3160,7 +3183,7 @@ var UBS = (() => {
       if (left) {
         ZEROS16.set(data.subarray(blocks * BLOCK_SIZE));
         this._updateBlock(swapLE(ZEROS32[3]), swapLE(ZEROS32[2]), swapLE(ZEROS32[1]), swapLE(ZEROS32[0]));
-        clean2(ZEROS32);
+        clean3(ZEROS32);
       }
       return this;
     }
@@ -3215,7 +3238,7 @@ var UBS = (() => {
       x |= x << 8;
       box[t[i]] = (x ^ x >> 4 ^ x >> 5 ^ x >> 6 ^ x >> 7 ^ 99) & 255;
     }
-    clean2(t);
+    clean3(t);
     return box;
   })();
   var rotr32_8 = (n) => n << 24 | n >>> 8;
@@ -3269,7 +3292,7 @@ var UBS = (() => {
         t = subByte(t);
       xk[i] = xk[i - Nk] ^ t;
     }
-    clean2(...toClean);
+    clean3(...toClean);
     return xk;
   }
   function apply0123(T01, T23, s0, s1, s2, s3) {
@@ -3324,7 +3347,7 @@ var UBS = (() => {
       const buf = u8(b32);
       for (let i = start, pos = 0; i < srcLen; i++, pos++)
         dst[i] = src[i] ^ buf[pos];
-      clean2(b32);
+      clean3(b32);
     }
     return dst;
   }
@@ -3337,7 +3360,7 @@ var UBS = (() => {
     h.update(data);
     h.update(num);
     const res = h.digest();
-    clean2(num);
+    clean3(num);
     return res;
   }
   var gcm = /* @__PURE__ */ wrapCipher({ blockSize: 16, nonceLength: 12, tagLength: 16, varSizeNonce: true }, function aesgcm(key, nonce, AAD) {
@@ -3379,7 +3402,7 @@ var UBS = (() => {
         const tag = _computeTag(authKey, tagMask, out.subarray(0, out.length - tagLength));
         toClean.push(tag);
         out.set(tag, plaintext.length);
-        clean2(...toClean);
+        clean3(...toClean);
         return out;
       },
       decrypt(ciphertext) {
@@ -3394,7 +3417,7 @@ var UBS = (() => {
         if (!equalBytes(tag, passedTag))
           throw new Error("aes/gcm: invalid ghash tag");
         const out = ctr32(xk, false, counter, data);
-        clean2(...toClean);
+        clean3(...toClean);
         return out;
       }
     };
@@ -3616,7 +3639,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
@@ -3833,7 +3856,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.1.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.3.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
