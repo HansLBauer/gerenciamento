@@ -159,18 +159,27 @@ var UBS = (() => {
   }
   function validProductivity(raw = {}) {
     const out = {};
-    for (const [key, max] of Object.entries({ weight: 700, height: 300, pc: 100, gestWeeks: 45, gestDays: 6, previousBirths: 40 })) {
+    for (const [key, max] of Object.entries({ weight: 700, height: 300, pc: 100, gestWeeks: 45, gestDays: 6, previousPregnancies: 60, previousBirths: 40 })) {
       if (raw[key] !== "" && raw[key] != null) {
         const n = Number(raw[key]);
         requireThat(Number.isFinite(n) && n >= 0 && n <= max, `Valor inv\xE1lido: ${key}`);
-        requireThat(!["gestWeeks", "gestDays", "previousBirths"].includes(key) || Number.isInteger(n), "Use n\xFAmeros inteiros para semanas, dias e partos.");
+        requireThat(!["gestWeeks", "gestDays", "previousPregnancies", "previousBirths"].includes(key) || Number.isInteger(n), "Use n\xFAmeros inteiros para semanas, dias e partos.");
         out[key] = n;
       }
     }
-    for (const [key, values] of Object.entries({ vaccination: ["", "Em dia", "Em atraso", "N\xE3o informado"], breastfeeding: ["", "Exclusiva", "Mista"], planned: ["", "Sim", "N\xE3o", "N\xE3o informado"] })) {
+    for (const [key, values] of Object.entries({ vaccination: ["", "Em dia", "Em atraso", "N\xE3o informado"], breastfeeding: ["", "Exclusiva", "Mista", "N\xE3o"], planned: ["", "Sim", "N\xE3o", "N\xE3o informado"] })) {
       requireThat(values.includes(raw[key] || ""), "Op\xE7\xE3o cl\xEDnica inv\xE1lida.");
       out[key] = raw[key] || "";
     }
+    for (const key of ["heelTest", "redReflex", "hearingTest"]) {
+      if (raw[key] === true || raw[key] === "on") out[key] = true;
+    }
+    if (raw.dum) {
+      const date = String(raw.dum);
+      requireThat(/^\d{4}-\d{2}-\d{2}$/.test(date) && Number.isFinite(Date.parse(date)) && new Date(date).toISOString().slice(0, 10) === date, "Informe uma DUM v\xE1lida.");
+      out.dum = date;
+    }
+    if (raw.rp) out.rp = String(raw.rp).trim().slice(0, 80);
     out.pressure = String(raw.pressure || "").slice(0, 40);
     out.notes = String(raw.notes || "").slice(0, 6e3);
     out.bmi = bmi(out.weight, out.height);
@@ -3639,7 +3648,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
@@ -3856,7 +3865,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.3.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.6.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
