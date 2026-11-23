@@ -157,6 +157,17 @@ var UBS = (() => {
     } else throw new Error("A\xE7\xE3o inv\xE1lida.");
     return p;
   }
+  function hasProductivity(p) {
+    return Object.values(p.productivity || {}).some((v) => Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== "");
+  }
+  function recordProductivity(patient, raw, at) {
+    const productivity = validProductivity(raw);
+    patient.productivity = productivity;
+    if (!hasProductivity(patient)) return;
+    patient.status = "arrived";
+    if (!patient.endedAt) patient.endedAt = new Date(at).toISOString();
+    patient.completion = "complete";
+  }
   function validProductivity(raw = {}) {
     const out = {};
     for (const [key, max] of Object.entries({ weight: 700, height: 300, pc: 100, gestWeeks: 45, gestDays: 6, previousPregnancies: 60, previousBirths: 40 })) {
@@ -3648,7 +3659,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
@@ -3704,18 +3715,16 @@ var UBS = (() => {
       requireThat(canSee(u, p), "Sem permiss\xE3o.");
       return viewPatient(u, p);
     }
-    const autoLate = input.operation === "arrive" && p.status === "late_absent" && !p.arrivedAt && !p.lateDecision && p.autoVersion === p.version && p.version === input.version + 1;
+    const autoLate = ["arrive", "productivity"].includes(input.operation) && p.status === "late_absent" && !p.arrivedAt && !p.lateDecision && p.autoVersion === p.version && p.version === input.version + 1;
     requireThat(p.version === input.version || autoLate, "O registro mudou em outro dispositivo. Atualize a lista e tente novamente.");
     const action = input.operation;
     if (["arrive", "absent", "undo", "ask"].includes(action)) requireThat(reception(u), "Somente a recep\xE7\xE3o pode registrar ou corrigir a presen\xE7a.");
     else own(u, p);
-    if (action === "productivity") {
-      p.productivity = validProductivity(input.productivity);
-      if (p.endedAt) p.completion = "complete";
-    } else {
+    const at = input.occurredAt == null ? Date.now() : Number(input.occurredAt);
+    requireThat(Number.isFinite(at) && at > 0 && at <= Date.now() + 3e5, "Hor\xE1rio do dispositivo inv\xE1lido.");
+    if (action === "productivity") recordProductivity(p, input.productivity, at);
+    else {
       if (action === "start") requireThat(!patients(input.date).some((x) => x.professionalId === u.id && x.startedAt && !x.endedAt), "Finalize o atendimento atual antes de iniciar outro.");
-      const at = input.occurredAt == null ? Date.now() : Number(input.occurredAt);
-      requireThat(Number.isFinite(at) && at > 0 && at <= Date.now() + 3e5, "Hor\xE1rio do dispositivo inv\xE1lido.");
       transition(p, action, at);
       if (action === "finish" && input.productivity) p.productivity = validProductivity(input.productivity);
     }
@@ -3865,7 +3874,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.6.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.7.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
