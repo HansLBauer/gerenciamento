@@ -51,7 +51,7 @@ var UBS = (() => {
     ["laura", "Laura", "Dentista", "dentist"],
     ["leticia", "Let\xEDcia Novo Arnas", "M\xE9dica I", "doctor"],
     ["michelli", "Michelli", "Psic\xF3loga", "psychologist"],
-    ["natalia", "Nat\xE1lia", "M\xE9dica Apoios", "doctor"],
+    ["natalia", "Nat\xE1lia Cec\xEDlio Assun\xE7\xE3o", "M\xE9dica Apoios", "doctor"],
     ["tania", "T\xE2nia", "Produtividade", "productivity"],
     ["debora", "D\xE9bora", "Ger\xEAncia", "manager"],
     ["heuller", "Heuller Diego Lara Andrade", "Ger\xEAncia / Enfermagem IV", "manager", "nurse"],
@@ -3800,13 +3800,13 @@ var UBS = (() => {
   function handle(input) {
     requireThat(input && typeof input.action === "string", "Requisi\xE7\xE3o inv\xE1lida.");
     requireThat(props().getProperty("INSTALLED") === "1", "O Apps Script ainda precisa ser instalado. Execute instalarSistema.");
-    if (!props().getProperty("EQUIPE_280")) {
+    if (!props().getProperty("EQUIPE_2100")) {
       const existing = staff();
       for (const person of STAFF) {
         const old = existing.find((x) => x.id === person.id);
         if (!old || old.name !== person.name || old.title !== person.title || old.clinicalRole !== person.clinicalRole) put("Profissionais", { ...old, ...person });
       }
-      props().setProperty("EQUIPE_280", "1");
+      props().setProperty("EQUIPE_2100", "1");
     }
     if (input.action === "profiles") return { staff: staff().filter((u2) => !reception(u2)).map((u2) => ({ ...u2, hasPassword: Boolean(credential(u2.id)) })), ready: true };
     if (input.action === "login") {
@@ -3904,7 +3904,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.8.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.10.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
