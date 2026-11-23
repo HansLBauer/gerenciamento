@@ -1,5 +1,5 @@
-const CACHE='nova-veneza-shell-d038984c25cd';
-self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(["./","./manifest.webmanifest","./icons/icon-192.png","./icons/icon-512.png","./assets/_commonjsHelpers-Cpj98o6Y.js","./assets/html2canvas.esm-B0tyYwQk.js","./assets/index-BOd3sADV.js","./assets/index-CcBMP7Fm.css","./assets/index-DdBV6pZW.js","./assets/index.es-DCbsmgwN.js","./assets/pdf-C-olXVQ4.js","./assets/purify.es-BhqXAQOW.js","./assets/report-DMHgl04b.js"])));});
+const CACHE='nova-veneza-shell-e7886ab51a9e';
+self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(["./","./manifest.webmanifest","./icons/icon-192.png","./icons/icon-512.png","./assets/_commonjsHelpers-Cpj98o6Y.js","./assets/html2canvas.esm-B0tyYwQk.js","./assets/index-CWcIvnHG.css","./assets/index-DdBV6pZW.js","./assets/index-bgtTK769.js","./assets/index.es-CqKwEpbP.js","./assets/pdf-C-olXVQ4.js","./assets/purify.es-BhqXAQOW.js","./assets/report-DiJyyaYY.js"])));});
 self.addEventListener('activate',event=>{event.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('nova-veneza-shell-')&&k!==CACHE).map(k=>caches.delete(k))))]));});
 // Cache somente arquivos públicos do aplicativo. Nunca armazenar APIs, pacientes ou senhas.
 self.addEventListener('fetch',event=>{
