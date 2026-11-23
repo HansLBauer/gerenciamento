@@ -42,20 +42,30 @@ var UBS = (() => {
   }
 
   // src/domain.js
-  var ROLES = { doctor: "M\xE9dico(a)", nurse: "Enfermeiro(a)", dentist: "Dentista", psychologist: "Psic\xF3logo(a)", manager: "Ger\xEAncia", productivity: "Produtividade", reception: "Recep\xE7\xE3o" };
+  var ROLES = { doctor: "M\xE9dico(a)", nurse: "Enfermeiro(a)", technician: "T\xE9c. de Enfermagem", assistant: "Aux. de Enfermagem", dentist: "Dentista", psychologist: "Psic\xF3logo(a)", manager: "Ger\xEAncia", productivity: "Produtividade", reception: "Recep\xE7\xE3o" };
   var STAFF = [
-    ["alda", "Alda", "M\xE9dica IV", "doctor"],
+    ["alda", "Alda de Oliveira", "M\xE9dica IV", "doctor"],
     ["bianca", "Bianca", "Dentista II", "dentist"],
-    ["hans", "Hans", "M\xE9dico II", "doctor"],
-    ["heitor", "Heitor", "M\xE9dico III", "doctor"],
+    ["hans", "Hans Loures Bauer", "M\xE9dico II", "doctor"],
+    ["heitor", "Heitor Pereira Borges Bonolo", "M\xE9dico III", "doctor"],
     ["laura", "Laura", "Dentista", "dentist"],
-    ["leticia", "Let\xEDcia", "M\xE9dica I", "doctor"],
+    ["leticia", "Let\xEDcia Novo Arnas", "M\xE9dica I", "doctor"],
     ["michelli", "Michelli", "Psic\xF3loga", "psychologist"],
     ["natalia", "Nat\xE1lia", "M\xE9dica Apoios", "doctor"],
     ["tania", "T\xE2nia", "Produtividade", "productivity"],
     ["debora", "D\xE9bora", "Ger\xEAncia", "manager"],
-    ["heuller", "Heuller", "Ger\xEAncia", "manager"]
-  ].map(([id, name, title, role]) => ({ id, name, title, role }));
+    ["heuller", "Heuller Diego Lara Andrade", "Ger\xEAncia / Enfermagem IV", "manager", "nurse"],
+    ["ingrid", "Ingrid Gabriele", "Enfermagem III", "nurse"],
+    ["gino", "Gino Prehl", "Enfermagem II", "nurse"],
+    ["maria-lucia", "Maria L\xFAcia", "Enfermagem I", "nurse"],
+    ["thais", "Tha\xEDs Bassani", "Enfermagem IV", "nurse"],
+    ["paulo", "Paulo Donizete", "Aux. de Enfermagem I", "assistant"],
+    ["jose", "Jos\xE9 Nicelso", "Enfermagem III - Apoio", "nurse"],
+    ["dircelene", "Dircelene Martins", "Aux. de Enfermagem II", "assistant"],
+    ["samanta", "Samanta Vanessa", "T\xE9c. de Enfermagem IV", "technician"],
+    ["aguida", "\xC1guida Vit\xF3ria", "T\xE9c. de Enfermagem III", "technician"],
+    ["idevanete", "Idevanete Tavares", "Aux. de Enfermagem IV", "assistant"]
+  ].map(([id, name, title, role, clinicalRole]) => ({ id, name, title, role, ...clinicalRole ? { clinicalRole } : {} }));
   var BLOCKS = [
     ["simples", "Receitu\xE1rio Simples", 3],
     ["especial", "Receitu\xE1rio de Controle Especial", 3],
@@ -66,7 +76,10 @@ var UBS = (() => {
     ["atendimento", "Ficha de Atendimento", 3],
     ["atestado", "Atestado", 3]
   ].map(([id, name, minimum]) => ({ id, name, minimum }));
-  var clinical = (u) => ["doctor", "nurse", "dentist", "psychologist"].includes(u == null ? void 0 : u.role);
+  var nursing = (u) => ["nurse", "technician", "assistant"].includes((u == null ? void 0 : u.clinicalRole) || (u == null ? void 0 : u.role));
+  var clinical = (u) => nursing(u) || ["doctor", "dentist", "psychologist"].includes(u == null ? void 0 : u.role);
+  var canSeeMaterials = (u) => nursing(u) || (u == null ? void 0 : u.role) === "manager";
+  var MATERIALS = [{ id: "sonda-vesical", name: "Sonda Vesical", initial: 10, category: "materials" }];
   function localDate(t = Date.now()) {
     return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(t));
   }
@@ -209,6 +222,9 @@ var UBS = (() => {
     }
     if (Array.isArray(raw.shortcuts)) out.shortcuts = shortcuts.filter((label) => raw.shortcuts.includes(label));
     return out;
+  }
+  function sortStaff(list) {
+    return [...list].sort((a, b) => (["debora", "heuller"].includes(a.id) ? 1 : 0) - (["debora", "heuller"].includes(b.id) ? 1 : 0) || a.name.localeCompare(b.name, "pt-BR"));
   }
 
   // node_modules/@noble/hashes/esm/crypto.js
@@ -3571,13 +3587,13 @@ var UBS = (() => {
     return db().getSheetByName(name) ? all(name).filter((p) => p.date === date) : [];
   }
   function staff() {
-    return all("Profissionais");
+    return sortStaff(all("Profissionais"));
   }
   function user(id) {
     return staff().find((u) => u.id === id);
   }
   function canSee(u, p) {
-    return !clinical(u) || u.id === p.professionalId;
+    return manager(u) || !clinical(u) || u.id === p.professionalId;
   }
   function reception(u) {
     return u.role === "reception";
@@ -3639,8 +3655,8 @@ var UBS = (() => {
     }
     return p;
   }
-  function stock(moves = all("EstoqueMovimentos")) {
-    return BLOCKS.map((b) => ({ ...b, quantity: moves.filter((m) => m.blockId === b.id).reduce((n, m) => n + m.delta, 0) }));
+  function stock(u, moves = all("EstoqueMovimentos")) {
+    return (canSeeMaterials(u) ? [...BLOCKS, ...MATERIALS] : BLOCKS).map((b) => ({ ...b, quantity: moves.filter((m) => m.blockId === b.id).reduce((n, m) => n + m.delta, b.initial || 0) }));
   }
   function overdue(date) {
     for (const p of patients(date)) {
@@ -3659,7 +3675,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(moves), movements: (manager(u) ? moves : moves.filter((m) => m.userId === u.id)).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !MATERIALS.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
@@ -3668,7 +3684,7 @@ var UBS = (() => {
     const people = staff();
     for (const p of list) {
       requireThat(people.some((x) => x.id === p.professionalId && clinical(x)), "Escolha um profissional de atendimento.");
-      if (clinical(u)) requireThat(p.professionalId === u.id, "Importe apenas a sua agenda.");
+      if (clinical(u) && !manager(u)) requireThat(p.professionalId === u.id, "Importe apenas a sua agenda.");
     }
     const date = list[0].date;
     requireThat(list.every((p) => p.date === date && p.professionalId === list[0].professionalId), "Use uma \xFAnica data e profissional por lista.");
@@ -3746,18 +3762,24 @@ var UBS = (() => {
   }
   function inventory(u, input) {
     requireThat(manager(u) || clinical(u), "Sem permiss\xE3o para alterar estoque.");
-    requireThat(BLOCKS.some((b) => b.id === input.blockId), "Item inv\xE1lido.");
+    const material = MATERIALS.some((b) => b.id === input.blockId);
+    requireThat(material ? canSeeMaterials(u) : BLOCKS.some((b) => b.id === input.blockId), "Item inv\xE1lido.");
     const key = requestKey(u, input);
     const previous = all("EstoqueMovimentos").find((m) => m.id === key);
-    if (previous) return input.occurredAt ? { stock: stock(), movement: previous } : stock();
+    if (previous) return input.occurredAt ? { stock: stock(u), movement: previous } : stock(u);
     let delta;
-    if (input.operation === "set") {
+    if (input.operation === "restock") {
+      requireThat(material && manager(u), "Somente a ger\xEAncia pode repor materiais.");
+      delta = Number(input.quantity);
+      requireThat(Number.isInteger(delta) && delta > 0 && delta <= 1e5, "Quantidade inv\xE1lida.");
+    } else if (input.operation === "set") {
+      requireThat(!material, "Use a reposi\xE7\xE3o de unidades.");
       requireThat(manager(u), "Somente a ger\xEAncia ajusta o saldo.");
       const n = Number(input.quantity);
       requireThat(Number.isInteger(n) && n >= 0 && n <= 1e5, "Quantidade inv\xE1lida.");
-      delta = n - stock().find((b) => b.id === input.blockId).quantity;
+      delta = n - stock(u).find((b) => b.id === input.blockId).quantity;
     } else if (input.operation === "take") {
-      requireThat(clinical(u), "Retiradas s\xE3o registradas pelo pr\xF3prio profissional.");
+      requireThat(material ? nursing(u) : clinical(u), "Retiradas s\xE3o registradas pelo pr\xF3prio profissional.");
       const n = Number(input.quantity);
       requireThat(Number.isInteger(n) && n > 0 && n <= 1e3, "Informe uma quantidade inteira positiva.");
       delta = -n;
@@ -3769,15 +3791,23 @@ var UBS = (() => {
       requireThat(Number.isInteger(n) && n >= 0 && n <= 1e3, "Quantidade inv\xE1lida.");
       delta = -n - m.delta;
     } else throw new Error("Opera\xE7\xE3o inv\xE1lida.");
-    requireThat(stock().find((b) => b.id === input.blockId).quantity + delta >= 0, "Estoque insuficiente.");
+    requireThat(stock(u).find((b) => b.id === input.blockId).quantity + delta >= 0, "Estoque insuficiente.");
     const movement = { id: key, clientRequest: input.requestId || null, blockId: input.blockId, userId: u.id, userName: u.name, delta, at: iso(), kind: input.operation, corrects: input.operation === "correct" ? input.movementId : null, quantity: Number(input.quantity) };
     append("EstoqueMovimentos", [movement]);
     audit(u, "estoque", movement.id);
-    return input.occurredAt ? { stock: stock(), movement } : stock();
+    return input.occurredAt ? { stock: stock(u), movement } : stock(u);
   }
   function handle(input) {
     requireThat(input && typeof input.action === "string", "Requisi\xE7\xE3o inv\xE1lida.");
     requireThat(props().getProperty("INSTALLED") === "1", "O Apps Script ainda precisa ser instalado. Execute instalarSistema.");
+    if (!props().getProperty("EQUIPE_280")) {
+      const existing = staff();
+      for (const person of STAFF) {
+        const old = existing.find((x) => x.id === person.id);
+        if (!old || old.name !== person.name || old.title !== person.title || old.clinicalRole !== person.clinicalRole) put("Profissionais", { ...old, ...person });
+      }
+      props().setProperty("EQUIPE_280", "1");
+    }
     if (input.action === "profiles") return { staff: staff().filter((u2) => !reception(u2)).map((u2) => ({ ...u2, hasPassword: Boolean(credential(u2.id)) })), ready: true };
     if (input.action === "login") {
       const reset = rate(input.id);
@@ -3874,7 +3904,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.7.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.8.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
