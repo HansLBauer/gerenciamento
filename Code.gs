@@ -41,6 +41,2804 @@ var UBS = (() => {
     });
   }
 
+  // src/almox.js
+  var almox_default = [
+    {
+      "id": "alm-8",
+      "row": 8,
+      "number": 1,
+      "name": "Abaixador de l\xEDngua (esp\xE1tula de  madeira)",
+      "unit": "unidade",
+      "initial": 1300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-9",
+      "row": 9,
+      "number": 2,
+      "name": "\xC1gua destilada para autoclave - gal\xE3o com 5 litros.",
+      "unit": "gal\xE3o",
+      "initial": null,
+      "note": "odonto",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-10",
+      "row": 10,
+      "number": 3,
+      "name": "\xC1gua Oxigenada 10 volumes (Per\xF3xido de Hidrog\xEAnio 3%) - Almotolia contendo 100 mL.",
+      "unit": "almotolia",
+      "initial": 1,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-11",
+      "row": 11,
+      "number": 4,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 13x4,5.",
+      "unit": "unidade",
+      "initial": 900,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-12",
+      "row": 12,
+      "number": 5,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 20x5,5.",
+      "unit": "unidade",
+      "initial": 1100,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-13",
+      "row": 13,
+      "number": 6,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 25x7.",
+      "unit": "unidade",
+      "initial": 1500,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-14",
+      "row": 14,
+      "number": 7,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 25x8.",
+      "unit": "unidade",
+      "initial": 2e3,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-15",
+      "row": 15,
+      "number": 8,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 30x7.",
+      "unit": "unidade",
+      "initial": 1600,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-16",
+      "row": 16,
+      "number": 9,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 30x8.",
+      "unit": "unidade",
+      "initial": 600,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-17",
+      "row": 17,
+      "number": 10,
+      "name": "Agulha Hipod\xE9rmica descart\xE1vel, calibre 40x12.",
+      "unit": "unidade",
+      "initial": 400,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-18",
+      "row": 18,
+      "number": 11,
+      "name": "\xC1lcool 70 Hospitalar. Produto para uso profissional. Em frasco pl\xE1stico, contendo 100 ml",
+      "unit": "almotolia",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-19",
+      "row": 19,
+      "number": 12,
+      "name": "\xC1lcool Gel 70 Hospitalar. Em frasco pl\xE1stico, contendo entre 300 e 600 gramas.",
+      "unit": "frasco",
+      "initial": 27,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-20",
+      "row": 20,
+      "number": 13,
+      "name": "Algod\xE3o Hidr\xF3filo.",
+      "unit": "pacote",
+      "initial": 12,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-21",
+      "row": 21,
+      "number": 14,
+      "name": "Almotolia de plastico transparente, resistente, capacidade 250 mL.",
+      "unit": "unidade",
+      "initial": 13,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-22",
+      "row": 22,
+      "number": 15,
+      "name": "Almotolia de plastico \xC2mbar, resistente, capacidade 250 mL.",
+      "unit": "unidade",
+      "initial": 2,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-23",
+      "row": 23,
+      "number": 16,
+      "name": "Aparelho de barbear descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 34,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-24",
+      "row": 24,
+      "number": 17,
+      "name": "Atadura de crepe de algod\xE3o cru, tipo II, 06 cm x 1,80 m.",
+      "unit": "d\xFAzia",
+      "initial": 20,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-25",
+      "row": 25,
+      "number": 18,
+      "name": "Atadura de crepe de algod\xE3o cru, tipo II, 10 cm x 1,80 m.",
+      "unit": "d\xFAzia",
+      "initial": 10,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-26",
+      "row": 26,
+      "number": 19,
+      "name": "Atadura de crepe de algod\xE3o cru, tipo II, 15 cm x 1,80 m.",
+      "unit": "d\xFAzia",
+      "initial": 9,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-27",
+      "row": 27,
+      "number": 20,
+      "name": "Avental Descart\xE1vel, sem mangas (tipo camisola). Para uso em exames - cor rosa ou azul",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-28",
+      "row": 28,
+      "number": 21,
+      "name": "Avental Descart\xE1vel, manga longa e punho de el\xE1stico, para uso ambulatorial.",
+      "unit": "unidade",
+      "initial": null,
+      "note": "odonto",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-29",
+      "row": 29,
+      "number": 22,
+      "name": "Bolsa est\xE9ril para coleta de urina em Sonda Foley (sistema fechado). Capacidade, aproximada, de 2.000 mL.",
+      "unit": "unidade",
+      "initial": 7,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-30",
+      "row": 30,
+      "number": 23,
+      "name": "Cadar\xE7o sarjado - Rolo com 10 metros.",
+      "unit": "rolo",
+      "initial": 4,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-31",
+      "row": 31,
+      "number": 24,
+      "name": "Caixa coletora de material perfuro-cortante, com capacidade de 13 litros.",
+      "unit": "unidade",
+      "initial": 9,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-32",
+      "row": 32,
+      "number": 25,
+      "name": "C\xE2nula para Traqueostomia n\xBA 2 fabricada em a\xE7o inoxid\xE1vel, esteriliz\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-33",
+      "row": 33,
+      "number": 26,
+      "name": "C\xE2nula para Traqueostomia n\xBA 3 com CUFF, pl\xE1stica, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-34",
+      "row": 34,
+      "number": 27,
+      "name": "C\xE2nula para Traqueostomia n\xBA 3,  fabricada em a\xE7o inoxid\xE1vel, esteriliz\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-35",
+      "row": 35,
+      "number": 28,
+      "name": "C\xE2nula para Traqueostomia n\xBA 4 com CUFF, pl\xE1stica, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-36",
+      "row": 36,
+      "number": 29,
+      "name": "C\xE2nula para Traqueostomia n\xBA 4,  fabricada em a\xE7o inoxid\xE1vel, esteriliz\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-37",
+      "row": 37,
+      "number": 30,
+      "name": "C\xE2nula para Traqueostomia n\xBA 5 com CUFF, pl\xE1stica, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-38",
+      "row": 38,
+      "number": 31,
+      "name": "C\xE2nula para Traqueostomia n\xBA 5,  fabricada em a\xE7o inoxid\xE1vel, esteriliz\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-39",
+      "row": 39,
+      "number": 32,
+      "name": "C\xE2nula para Traqueostomia n\xBA 6 com CUFF, pl\xE1stica, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-40",
+      "row": 40,
+      "number": 33,
+      "name": "C\xE2nula para Traqueostomia n\xBA 8 com CUFF, pl\xE1stica, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-41",
+      "row": 41,
+      "number": 34,
+      "name": "C\xE2nula para Traqueostomia n\xBA 9 com CUFF, pl\xE1stica, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-42",
+      "row": 42,
+      "number": 35,
+      "name": "Cateter nasal tipo \xF3culos para oxig\xEAnio, infantil.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-43",
+      "row": 43,
+      "number": 36,
+      "name": "Cateter nasal tipo \xF3culos para oxig\xEAnio, adulto.",
+      "unit": "unidade",
+      "initial": 8,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-44",
+      "row": 44,
+      "number": 37,
+      "name": "Cateter venoso perif\xE9rico n\xBA 14, com dispositivo de seguran\xE7a, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-45",
+      "row": 45,
+      "number": 38,
+      "name": "Cateter venoso perif\xE9rico n\xBA 16, com dispositivo de seguran\xE7a, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-46",
+      "row": 46,
+      "number": 39,
+      "name": "Cateter venoso perif\xE9rico n\xBA 18, com dispositivo de seguran\xE7a, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 8,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-47",
+      "row": 47,
+      "number": 40,
+      "name": "Cateter venoso perif\xE9rico n\xBA 20, com dispositivo de seguran\xE7a, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-48",
+      "row": 48,
+      "number": 41,
+      "name": "Cateter venoso perif\xE9rico n\xBA 22, com dispositivo de seguran\xE7a, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 500,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-49",
+      "row": 49,
+      "number": 42,
+      "name": "Cateter venoso perif\xE9rico n\xBA 24, com dispositivo de seguran\xE7a, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-50",
+      "row": 50,
+      "number": 43,
+      "name": "Clamp umbilical confeccionado em PVC, flex\xEDvel,at\xF3xico, esterilizado.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-51",
+      "row": 51,
+      "number": 44,
+      "name": "Clorexidina 0,2%. Solu\xE7\xE3o aquosa, antiss\xE9ptico dermatol\xF3gico para uso hospitalar.",
+      "unit": "almotolia",
+      "initial": 12,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-52",
+      "row": 52,
+      "number": 45,
+      "name": "Clorexidina 0,5%. Solu\xE7\xE3o alco\xF3lica, antiss\xE9ptico dermatol\xF3gico para uso hospitalar.",
+      "unit": "almotolia",
+      "initial": 10,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-53",
+      "row": 53,
+      "number": 46,
+      "name": "Clorexidina 2%. Solu\xE7\xE3o Degermante com tensoativos.",
+      "unit": "almotolia",
+      "initial": 4,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-54",
+      "row": 54,
+      "number": 47,
+      "name": "Colar Cervical -  tamanho Neonatal",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-55",
+      "row": 55,
+      "number": 48,
+      "name": "Colar Cervical -  tamanho Pequeno",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-56",
+      "row": 56,
+      "number": 49,
+      "name": "Colar Cervical -  tamanho M\xE9dio",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-57",
+      "row": 57,
+      "number": 50,
+      "name": "Colar Cervical -  tamanho Grande",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-58",
+      "row": 58,
+      "number": 51,
+      "name": "Coletor Pl\xE1stico EST\xC9RIL, para coleta de escarro ou urina (coletor universal), com capacidade para 80 mL.",
+      "unit": "Unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-59",
+      "row": 59,
+      "number": 52,
+      "name": "Coletor pl\xE1stico para secre\xE7\xF5es e urina (sistema aberto), capacidade aproximada 1.200 mL.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-60",
+      "row": 60,
+      "number": 53,
+      "name": "Compressa de Gaze EST\xC9RIL hidr\xF3fila. Pacote com 10 unidades.",
+      "unit": "pacote",
+      "initial": 1e3,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-61",
+      "row": 61,
+      "number": 54,
+      "name": "Compressa de Gaze Tipo Queijo hidr\xF3fila.",
+      "unit": "rolo",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-62",
+      "row": 62,
+      "number": 55,
+      "name": "Compressa de Gaze N\xC3O EST\xC9RIL - pacote c/ 500 unidades",
+      "unit": "pacote",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-63",
+      "row": 63,
+      "number": 56,
+      "name": "Compressa para Curativo Cir\xFArgico 15cm x 30cm (Chuma\xE7o), Est\xE9ril, Descart\xE1vel.",
+      "unit": "pacote",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-64",
+      "row": 64,
+      "number": 57,
+      "name": "Conjunto para Nebuliza\xE7\xE3o cont\xEDnua. Composto por copo\xA0nebulizador\xA0de 500 mL.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-65",
+      "row": 65,
+      "number": 58,
+      "name": "Copo Aspirador (Tipo Venturi) para rede canalizada de g\xE1s, para uso em ar comprimido (AR220).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-66",
+      "row": 66,
+      "number": 59,
+      "name": "Copo Umidificador para Oxig\xEAnio. Frasco em PVC de 250 mL.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-67",
+      "row": 67,
+      "number": 60,
+      "name": "Detergente Multi-enzim\xE1tico n\xE3o espumante (protease, peptidase, lipase, carbohidrase, amilase e celulase).",
+      "unit": "gal\xE3o",
+      "initial": null,
+      "note": "ODONTO ",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-68",
+      "row": 68,
+      "number": 61,
+      "name": "Dispositivo intravenoso (scalp), n\xB0 19.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-69",
+      "row": 69,
+      "number": 62,
+      "name": "Dispositivo intravenoso (scalp), n\xB0 21.",
+      "unit": "unidade",
+      "initial": 200,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-70",
+      "row": 70,
+      "number": 63,
+      "name": "Dispositivo intravenoso (scalp), n\xB0 23.",
+      "unit": "unidade",
+      "initial": 200,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-71",
+      "row": 71,
+      "number": 64,
+      "name": "Dispositivo intravenoso (scalp), n\xB0 25.",
+      "unit": "unidade",
+      "initial": 100,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-72",
+      "row": 72,
+      "number": 65,
+      "name": "Dispositivo intravenoso (scalp), n\xB0 27.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-73",
+      "row": 73,
+      "number": 66,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 4 masculino, confeccionado em SILICONE.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-74",
+      "row": 74,
+      "number": 67,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 4, masculino, confeccionado em puro l\xE1tex natural.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-75",
+      "row": 75,
+      "number": 68,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 5 masculino, confeccionado em SILICONE",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-76",
+      "row": 76,
+      "number": 69,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 5, masculino, confeccionado em puro l\xE1tex natural.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-77",
+      "row": 77,
+      "number": 70,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 6 masculino, confeccionado em SILICONE",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-78",
+      "row": 78,
+      "number": 71,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 6, masculino, confeccionado em puro l\xE1tex natural.",
+      "unit": "unidade",
+      "initial": 9,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-79",
+      "row": 79,
+      "number": 72,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 7 masculino, confeccionado em SILICONE",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-80",
+      "row": 80,
+      "number": 73,
+      "name": "Dispositivo para incontin\xEAncia urin\xE1ria n\xB0 7, masculino, confeccionado em puro l\xE1tex natural.",
+      "unit": "unidade",
+      "initial": 79,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-81",
+      "row": 81,
+      "number": 74,
+      "name": "DIU - Dispositivo Intra Uterino",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-82",
+      "row": 82,
+      "number": 75,
+      "name": "Eletrodo para equipamento m\xE9dico pr\xE9-cordial, para uso em aparelho de eletrocardi\xF3grafo, sem pera.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-83",
+      "row": 83,
+      "number": 76,
+      "name": "Eletrodos descart\xE1veis para monitoriza\xE7\xE3o card\xEDaca.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-84",
+      "row": 84,
+      "number": 77,
+      "name": "Equipo nutri\xE7\xE3o enteral em pvc cristal, conector luer com tampa, est\xE9ril, descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-85",
+      "row": 85,
+      "number": 78,
+      "name": "Equipo para Nutri\xE7\xE3o Enteral, conector escalonado com tampa; est\xE9ril; descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-86",
+      "row": 86,
+      "number": 79,
+      "name": "Equipo para Infus\xF5es Parenterais MACROGOTAS.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-87",
+      "row": 87,
+      "number": 80,
+      "name": "Escova Cervical para Colpocitologia.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-88",
+      "row": 88,
+      "number": 81,
+      "name": "Esfigmoman\xF4metro anal\xF3gico de bra\xE7o, tamanho adulto.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-89",
+      "row": 89,
+      "number": 82,
+      "name": "Esfigmoman\xF4metro anal\xF3gico de bra\xE7o, tamanho infantil.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-90",
+      "row": 90,
+      "number": 83,
+      "name": "Esfigmoman\xF4metro anal\xF3gico de bra\xE7o, tamanho Obeso",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-91",
+      "row": 91,
+      "number": 84,
+      "name": "Esfigmoman\xF4metro digital de bra\xE7o, semi-autom\xE1tico.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-92",
+      "row": 92,
+      "number": 85,
+      "name": "Esparadrapo Imperme\xE1vel.",
+      "unit": "unidade",
+      "initial": 50,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-93",
+      "row": 93,
+      "number": 86,
+      "name": "Esp\xE1tula de Ayre. Confeccionada em madeira resistente.",
+      "unit": "unidade",
+      "initial": 900,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-94",
+      "row": 94,
+      "number": 87,
+      "name": "Esp\xE9culo vaginal descart\xE1vel tamanho Grande.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-95",
+      "row": 95,
+      "number": 88,
+      "name": "Esp\xE9culo vaginal descart\xE1vel tamanho M\xE9dio.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-96",
+      "row": 96,
+      "number": 89,
+      "name": "Esp\xE9culo vaginal descart\xE1vel tamanho Pequeno.",
+      "unit": "unidade",
+      "initial": 20,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-97",
+      "row": 97,
+      "number": 90,
+      "name": "Estetosc\xF3pio Adulto.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-98",
+      "row": 98,
+      "number": 91,
+      "name": "Estetosc\xF3pio Infantil.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-99",
+      "row": 99,
+      "number": 92,
+      "name": "Fio de Sutura Nylon 2-0 c/ Agulha triangular, cuticular - Caixa contendo24 unidades.",
+      "unit": "caixa",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-100",
+      "row": 100,
+      "number": 93,
+      "name": "Fio de Sutura Nylon 3-0 c/ Agulha triangular, cuticular - Caixa contendo 24 unidades.",
+      "unit": "caixa",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-101",
+      "row": 101,
+      "number": 94,
+      "name": "Fio de Sutura Nylon 4-0 c/ Agulha triangular, cuticular - Caixa contendo 24 unidades.",
+      "unit": "caixa",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-102",
+      "row": 102,
+      "number": 95,
+      "name": "Fio de Sutura Nylon 5-0 c/ Agulha triangular, cuticular - Caixa contendo 24 unidades.",
+      "unit": "caixa",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-103",
+      "row": 103,
+      "number": 96,
+      "name": "Fio guia para intuba\xE7\xE3o Adulto.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-104",
+      "row": 104,
+      "number": 97,
+      "name": "Fio guia para intuba\xE7\xE3o Infantil.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-105",
+      "row": 105,
+      "number": 98,
+      "name": "Fita Adesiva Hospitalar de 16 mm x 50 metros",
+      "unit": "rolo",
+      "initial": 22,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-106",
+      "row": 106,
+      "number": 99,
+      "name": "Fita Hipoalerg\xEAnica para curativo (Micropore).",
+      "unit": "rolo",
+      "initial": 50,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-107",
+      "row": 107,
+      "number": 100,
+      "name": "Fita para Autoclave indicadora de esteriliza\xE7\xE3o a vapor.",
+      "unit": "rolo",
+      "initial": null,
+      "note": "odonto",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-108",
+      "row": 108,
+      "number": 101,
+      "name": "Fixador para L\xE2mina Citol\xF3gica - frasco aerosol contendo 100 mL de solu\xE7\xE3o fixadora.",
+      "unit": "frasco",
+      "initial": null,
+      "note": "em falta",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-109",
+      "row": 109,
+      "number": 102,
+      "name": "Flux\xF4metro para rede canalizada de oxig\xEAnio medicinal.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-110",
+      "row": 110,
+      "number": 103,
+      "name": "Flux\xF4metro para rede canalizada de ar comprimido.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-111",
+      "row": 111,
+      "number": 104,
+      "name": "Frasco para Nutri\xE7\xE3o enteral est\xE9ril.",
+      "unit": "frasco",
+      "initial": 800,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-112",
+      "row": 112,
+      "number": 105,
+      "name": "Gel Condutor para realiza\xE7\xE3o de Exames.",
+      "unit": "frasco",
+      "initial": 13,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-113",
+      "row": 113,
+      "number": 106,
+      "name": "Gel Lubrificante \xCDntimo",
+      "unit": "unidade",
+      "initial": 80,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-114",
+      "row": 114,
+      "number": 107,
+      "name": "H\xE1stes pl\xE1sticas flex\xEDveis e inquebr\xE1veis, com pontas de algod\xE3o 100% puro.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-115",
+      "row": 115,
+      "number": 108,
+      "name": "Hipoclorito de S\xF3dio 5% (Concentrado), desinfec\xE7\xE3o de surpef\xEDcies fixas e artigos e acess\xF3rios hospitalares.",
+      "unit": "gal\xE3o",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-116",
+      "row": 116,
+      "number": 109,
+      "name": "Inv\xF3lucro para caixa/pacotes de n\xE3o tecido composto por tr\xEAs camadas de polipropileno, tamanho 50 x 50 cm.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-117",
+      "row": 117,
+      "number": 110,
+      "name": "Kit dreno de torax - de 40cm (comprimento) x 24mm (di\xE2metro), frasco com capacidade para 1.000 mL.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-118",
+      "row": 118,
+      "number": 111,
+      "name": "Kit dreno de t\xF3rax - de 45cm (comprimento) x 32mm (di\xE2metro), frasco com capacidade para 2.000 mL.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-119",
+      "row": 119,
+      "number": 112,
+      "name": "Kit dreno de torax - de 40cm (comprimento) x 10mm (di\xE2metro), frasco com capacidade para 500 mL.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-120",
+      "row": 120,
+      "number": 113,
+      "name": "Kit Eletrodo em forma de pin\xE7a (tipo cardioclip).",
+      "unit": "pacote",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-121",
+      "row": 121,
+      "number": 114,
+      "name": "L\xE2mina Citol\xF3gica, para microsc\xF3pio, em vidro. Caixa contendo 100 l\xE2minas.",
+      "unit": "caixa",
+      "initial": 4,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-122",
+      "row": 122,
+      "number": 115,
+      "name": "L\xE2mina Descart\xE1vel de Bisturi n\xB0 11",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-123",
+      "row": 123,
+      "number": 116,
+      "name": "L\xE2mina Descart\xE1vel de Bisturi n\xB0 12.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-124",
+      "row": 124,
+      "number": 117,
+      "name": "L\xE2mina Descart\xE1vel de Bisturi n\xB0 15.",
+      "unit": "unidade",
+      "initial": 200,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-125",
+      "row": 125,
+      "number": 118,
+      "name": "L\xE2mina Descart\xE1vel de Bisturi n\xB0 22.",
+      "unit": "unidade",
+      "initial": 200,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-126",
+      "row": 126,
+      "number": 119,
+      "name": "Len\xE7ol de Papel,  Descart\xE1vel.",
+      "unit": "rolo",
+      "initial": 60,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-127",
+      "row": 127,
+      "number": 120,
+      "name": "Limpador Desinfetante de Quatern\xE1rio. Para uso hospitalar.",
+      "unit": "frasco",
+      "initial": null,
+      "note": ".",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-128",
+      "row": 128,
+      "number": 121,
+      "name": "Luva Cir\xFArgica Descart\xE1vel, Est\xE9ril, tam. 6,0.",
+      "unit": "par",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-129",
+      "row": 129,
+      "number": 122,
+      "name": "Luva Cir\xFArgica Descart\xE1vel, Est\xE9ril, tam. 6,5.",
+      "unit": "par",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-130",
+      "row": 130,
+      "number": 123,
+      "name": "Luva Cir\xFArgica Descart\xE1vel, Est\xE9ril, tam. 7,0.",
+      "unit": "par",
+      "initial": 8,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-131",
+      "row": 131,
+      "number": 124,
+      "name": "Luva Cir\xFArgica Descart\xE1vel, Est\xE9ril, tam. 7,5.",
+      "unit": "par",
+      "initial": 42,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-132",
+      "row": 132,
+      "number": 125,
+      "name": "Luva Cir\xFArgica Descart\xE1vel, Est\xE9ril, tam. 8,0.",
+      "unit": "par",
+      "initial": 26,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-133",
+      "row": 133,
+      "number": 126,
+      "name": "Luva Cir\xFArgica Descart\xE1vel, Est\xE9ril, tam. 8,5.",
+      "unit": "par",
+      "initial": 15,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-134",
+      "row": 134,
+      "number": 127,
+      "name": "Luva Nitr\xEDlica sem p\xF3 - tamanho Pequeno",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-135",
+      "row": 135,
+      "number": 128,
+      "name": "Luva Nitr\xEDlica sem p\xF3 - tamanho M\xE9dio",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-136",
+      "row": 136,
+      "number": 129,
+      "name": "Luva Nitr\xEDlica sem p\xF3 - tamanho Grande",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-137",
+      "row": 137,
+      "number": 130,
+      "name": "Luva de L\xE1tex p/ Procedimentos, tamanho Grande.",
+      "unit": "unidade",
+      "initial": 1800,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-138",
+      "row": 138,
+      "number": 131,
+      "name": "Luva de L\xE1tex p/ Procedimentos, tamanho M\xE9dio.",
+      "unit": "unidade",
+      "initial": 500,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-139",
+      "row": 139,
+      "number": 132,
+      "name": "Luva de L\xE1tex p/ Procedimentos, tamanho Pequeno.",
+      "unit": "unidade",
+      "initial": 1e3,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-140",
+      "row": 140,
+      "number": 133,
+      "name": "Luva de Vinil p/ procedimento, tamanho Grande.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-141",
+      "row": 141,
+      "number": 134,
+      "name": "Luva de Vinil p/ procedimento, tamanho M\xE9dia.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-142",
+      "row": 142,
+      "number": 135,
+      "name": "Luva de Vinil p/ procedimento, tamanho Pequena.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-143",
+      "row": 143,
+      "number": 136,
+      "name": "Manguito para aparelho de press\xE3o semi-autom\xE1tico, tamanho adulto.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-144",
+      "row": 144,
+      "number": 137,
+      "name": "Manguito para aparelho de press\xE3o semi-autom\xE1tico, tamanho infantil.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-145",
+      "row": 145,
+      "number": 138,
+      "name": "Manguito para aparelho de press\xE3o semi-autom\xE1tico, tamanho obeso.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-146",
+      "row": 146,
+      "number": 139,
+      "name": "M\xE1scara cir\xFArgica com el\xE1stico de 3 camadas.",
+      "unit": "unidade",
+      "initial": 600,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-147",
+      "row": 147,
+      "number": 140,
+      "name": 'M\xE1scara de Venturi, para oxigenioterapia com sistema de "Venturi", tamanho ADULTO.',
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-148",
+      "row": 148,
+      "number": 141,
+      "name": 'M\xE1scara de Venturi, para oxigenioterapia com sistema de "Venturi", tamanho INFANTIL.',
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-149",
+      "row": 149,
+      "number": 142,
+      "name": "M\xE1scara N95 (PPF-2).",
+      "unit": "unidade",
+      "initial": 16,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-150",
+      "row": 150,
+      "number": 143,
+      "name": "Micronebulizador completo para inala\xE7\xE3o ADULTO, para ar comprimido.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-151",
+      "row": 151,
+      "number": 144,
+      "name": "Micronebulizador completo para inala\xE7\xE3o ADULTO, para oxig\xEAnio.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-152",
+      "row": 152,
+      "number": 145,
+      "name": "Micronebulizador completo para inala\xE7\xE3o INFANTIL, para ar comprimido.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-153",
+      "row": 153,
+      "number": 146,
+      "name": "Micronebulizador completo para inala\xE7\xE3o INFANTIL, para oxig\xEAnio.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-154",
+      "row": 154,
+      "number": 147,
+      "name": "\xD3culos de Policarbonato (Prote\xE7\xE3o).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-155",
+      "row": 155,
+      "number": 148,
+      "name": "Papel em grau cir\xFArgico, 05 cm x 100 cm, composto de filme.",
+      "unit": "rolo",
+      "initial": null,
+      "note": "ODONTO",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-156",
+      "row": 156,
+      "number": 149,
+      "name": "Papel em grau cir\xFArgico, 10 cm x 100 cm, composto de filme.",
+      "unit": "rolo",
+      "initial": null,
+      "note": "ODONTO",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-157",
+      "row": 157,
+      "number": 150,
+      "name": "Papel em grau cir\xFArgico, 15 cm x 100 cm, composto de filme.",
+      "unit": "rolo",
+      "initial": null,
+      "note": "ODONTO",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-158",
+      "row": 158,
+      "number": 151,
+      "name": "Papel em grau cir\xFArgico, 20 cm x 100 cm, composto de filme.",
+      "unit": "rolo",
+      "initial": null,
+      "note": "ODONTO",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-159",
+      "row": 159,
+      "number": 152,
+      "name": "Papel em grau cir\xFArgico, 30 cm x 100 cm, composto de filme.",
+      "unit": "rolo",
+      "initial": null,
+      "note": "ODONTO",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-160",
+      "row": 160,
+      "number": 153,
+      "name": "Papel para Eletrocardiograma, termo-sens\xEDvel, medindo  110 mm (de largura) x 20 m\xEDnimo de metros (de comprimento).",
+      "unit": "rolo",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-161",
+      "row": 161,
+      "number": 154,
+      "name": "Papel para Eletrocardiograma, termo-sens\xEDvel, medindo  80 mm (de largura) x 20 m\xEDnimo de metros (de comprimento).",
+      "unit": "rolo",
+      "initial": 10,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-162",
+      "row": 162,
+      "number": 155,
+      "name": "Papel para Eletrocardiograma, em rolo de 210 mm (compativel ap. de ECG Maxedan e Contec).",
+      "unit": "rolo",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-163",
+      "row": 163,
+      "number": 156,
+      "name": "Papel para Eletrocardiograma, em folha A4 milimetrada (medindo aproximadamente 215 x 280 mm).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-164",
+      "row": 164,
+      "number": 157,
+      "name": "Pilha tipo AA (pequena).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-165",
+      "row": 165,
+      "number": 158,
+      "name": "Pilha tipo AAA (palito).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-166",
+      "row": 166,
+      "number": 159,
+      "name": "Pilha tipo Bateria (9V).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-167",
+      "row": 167,
+      "number": 160,
+      "name": "Pilha tipo C (m\xE9dia).",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-168",
+      "row": 168,
+      "number": 161,
+      "name": "Preservativo Masculino em L\xE1tex, COM LUBRIFICANTE",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-169",
+      "row": 169,
+      "number": 162,
+      "name": "Preservativo Masculino em L\xE1tex, SEM LUBRIFICANTE, PARA REALIZA\xC7\xC3O DE EXAMES",
+      "unit": "unidade",
+      "initial": null,
+      "note": "-",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-170",
+      "row": 170,
+      "number": 163,
+      "name": "Pulseira de identifica\xE7\xE3o para rec\xE9m nascido.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-171",
+      "row": 171,
+      "number": 164,
+      "name": "Reanimador cardiorespirat\xF3rio manual (AMBU) Adulto.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-172",
+      "row": 172,
+      "number": 165,
+      "name": "Reanimador cardiorespirat\xF3rio manual (AMBU) Infantil.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-173",
+      "row": 173,
+      "number": 166,
+      "name": "Reanimador cardiorespirat\xF3rio manual (AMBU) Neonatal",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-174",
+      "row": 174,
+      "number": 167,
+      "name": "Saco para cad\xE1ver.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-175",
+      "row": 175,
+      "number": 168,
+      "name": "Seringa descart\xE1vel est\xE9ril, capacidade 01 mL, bico tipo luer lock, sem agulha.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-176",
+      "row": 176,
+      "number": 169,
+      "name": "Seringa descart\xE1vel est\xE9ril, capacidade 03 mL, bico tipo luer lock, sem agulha.",
+      "unit": "unidade",
+      "initial": 1300,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-177",
+      "row": 177,
+      "number": 170,
+      "name": "Seringa descart\xE1vel est\xE9ril, capacidade 05 mL, bico tipo luer lock, sem agulha.",
+      "unit": "unidade",
+      "initial": 700,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-178",
+      "row": 178,
+      "number": 171,
+      "name": "Seringa descart\xE1vel est\xE9ril, capacidade 10 mL, bico tipo luer lock, sem agulha.",
+      "unit": "unidade",
+      "initial": 93,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-179",
+      "row": 179,
+      "number": 172,
+      "name": "Seringa descart\xE1vel est\xE9ril, capacidade 20 mL, bico tipo slip e sem rosca, sem agulha.",
+      "unit": "unidade",
+      "initial": 1e3,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-180",
+      "row": 180,
+      "number": 173,
+      "name": "Seringa descart\xE1vel est\xE9ril, capacidade 20 mL, bico luer lock, com rosca, sem agulha.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-181",
+      "row": 181,
+      "number": 174,
+      "name": "Sonda de Aspira\xE7\xE3o traqueal n\xB0 06.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-182",
+      "row": 182,
+      "number": 175,
+      "name": "Sonda de Aspira\xE7\xE3o traqueal n\xB0 08.",
+      "unit": "unidade",
+      "initial": 50,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-183",
+      "row": 183,
+      "number": 176,
+      "name": "Sonda de Aspira\xE7\xE3o traqueal n\xB0 10.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-184",
+      "row": 184,
+      "number": 177,
+      "name": "Sonda de Aspira\xE7\xE3o traqueal n\xB0 12.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-185",
+      "row": 185,
+      "number": 178,
+      "name": "Sonda de Aspira\xE7\xE3o traqueal n\xB0 14.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-186",
+      "row": 186,
+      "number": 179,
+      "name": "Sonda Endotraqueal  n\xB0 2,5 - Sem bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-187",
+      "row": 187,
+      "number": 180,
+      "name": "Sonda Endotraqueal  n\xB0 3,0 - Sem bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-188",
+      "row": 188,
+      "number": 181,
+      "name": "Sonda Endotraqueal  n\xB0 3,5 - Sem bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-189",
+      "row": 189,
+      "number": 182,
+      "name": "Sonda Endotraqueal n\xB0 4,0 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-190",
+      "row": 190,
+      "number": 183,
+      "name": "Sonda Endotraqueal n\xB0 4,5 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-191",
+      "row": 191,
+      "number": 184,
+      "name": "Sonda Endotraqueal n\xB0 5,0 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-192",
+      "row": 192,
+      "number": 185,
+      "name": "Sonda Endotraqueal n\xB0 5,5 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-193",
+      "row": 193,
+      "number": 186,
+      "name": "Sonda Endotraqueal n\xB0 6,0 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-194",
+      "row": 194,
+      "number": 187,
+      "name": "Sonda Endotraqueal n\xB0 6,5 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-195",
+      "row": 195,
+      "number": 188,
+      "name": "Sonda Endotraqueal n\xB0 7,0 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-196",
+      "row": 196,
+      "number": 189,
+      "name": "Sonda Endotraqueal n\xB0 7,5 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-197",
+      "row": 197,
+      "number": 190,
+      "name": "Sonda Endotraqueal n\xB0 8,0 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-198",
+      "row": 198,
+      "number": 191,
+      "name": "Sonda Endotraqueal n\xB0 8,5 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-199",
+      "row": 199,
+      "number": 192,
+      "name": "Sonda Endotraqueal n\xB0 9,0 - Com bal\xE3o.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-200",
+      "row": 200,
+      "number": 193,
+      "name": "Sonda Foley  n\xB0 08, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-201",
+      "row": 201,
+      "number": 194,
+      "name": "Sonda Foley  n\xB0 08, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-202",
+      "row": 202,
+      "number": 195,
+      "name": "Sonda Foley  n\xB0 10, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-203",
+      "row": 203,
+      "number": 196,
+      "name": "Sonda Foley  n\xB0 10, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-204",
+      "row": 204,
+      "number": 197,
+      "name": "Sonda Foley  n\xB0 12, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-205",
+      "row": 205,
+      "number": 198,
+      "name": "Sonda Foley  n\xB0 12, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-206",
+      "row": 206,
+      "number": 199,
+      "name": "Sonda Foley  n\xB0 14, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 14,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-207",
+      "row": 207,
+      "number": 200,
+      "name": "Sonda Foley  n\xB0 14, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 17,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-208",
+      "row": 208,
+      "number": 201,
+      "name": "Sonda Foley  n\xB0 16, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 9,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-209",
+      "row": 209,
+      "number": 202,
+      "name": "Sonda Foley  n\xB0 16, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-210",
+      "row": 210,
+      "number": 203,
+      "name": "Sonda Foley  n\xB0 18, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 18,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-211",
+      "row": 211,
+      "number": 204,
+      "name": "Sonda Foley  n\xB0 18, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-212",
+      "row": 212,
+      "number": 205,
+      "name": "Sonda Foley  n\xB0 20, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 10,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-213",
+      "row": 213,
+      "number": 206,
+      "name": "Sonda Foley  n\xB0 20, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-214",
+      "row": 214,
+      "number": 207,
+      "name": "Sonda Foley  n\xB0 22, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-215",
+      "row": 215,
+      "number": 208,
+      "name": "Sonda Foley  n\xB0 22, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-216",
+      "row": 216,
+      "number": 209,
+      "name": "Sonda Foley  n\xB0 24, confeccionada em borracha natural, siliconizada, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-217",
+      "row": 217,
+      "number": 210,
+      "name": "Sonda Foley  n\xB0 24, confeccionada em silicone, est\xE9ril, com duas vias.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-218",
+      "row": 218,
+      "number": 211,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 06.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-219",
+      "row": 219,
+      "number": 212,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 08.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-220",
+      "row": 220,
+      "number": 213,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 10.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-221",
+      "row": 221,
+      "number": 214,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 12.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-222",
+      "row": 222,
+      "number": 215,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 14.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-223",
+      "row": 223,
+      "number": 216,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 16.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-224",
+      "row": 224,
+      "number": 217,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 18.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-225",
+      "row": 225,
+      "number": 218,
+      "name": "Sonda Nasog\xE1strica Longa n\xB0 20.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-226",
+      "row": 226,
+      "number": 219,
+      "name": "Sonda para alimenta\xE7\xE3o enteral n\xB0 06.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-227",
+      "row": 227,
+      "number": 220,
+      "name": "Sonda para alimenta\xE7\xE3o enteral n\xB0 08.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-228",
+      "row": 228,
+      "number": 221,
+      "name": "Sonda para alimenta\xE7\xE3o enteral n\xB0 12.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-229",
+      "row": 229,
+      "number": 222,
+      "name": "Sonda Uretral n\xB0 06.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-230",
+      "row": 230,
+      "number": 223,
+      "name": "Sonda Uretral n\xB0 08.",
+      "unit": "unidade",
+      "initial": 400,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-231",
+      "row": 231,
+      "number": 224,
+      "name": "Sonda Uretral n\xB0 10.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-232",
+      "row": 232,
+      "number": 225,
+      "name": "Sonda Uretral n\xB0 12.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-233",
+      "row": 233,
+      "number": 226,
+      "name": "Sonda Uretral n\xB0 14.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-234",
+      "row": 234,
+      "number": 227,
+      "name": "Termohigr\xF4metro - temperatura e umidade",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-235",
+      "row": 235,
+      "number": 228,
+      "name": "Term\xF4metro digital com cabo extensor - temperatura m\xE1xima e m\xEDnima",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-236",
+      "row": 236,
+      "number": 229,
+      "name": "Term\xF4metro eletr\xF4nico para verifica\xE7\xE3o da temperatura corporal humana.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-237",
+      "row": 237,
+      "number": 230,
+      "name": "Tiras para teste de gravidez (bHCG - soro/urina) ultr\xE1-r\xE1pido.",
+      "unit": "unidade",
+      "initial": 100,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-238",
+      "row": 238,
+      "number": 231,
+      "name": "Tiras reagentes de urian\xE1lises (Urina) com v\xE1rias \xE1reas reagentes.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-239",
+      "row": 239,
+      "number": 232,
+      "name": "Torneirinha de 3 vias, descart\xE1vel, est\xE9ril.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-240",
+      "row": 240,
+      "number": 233,
+      "name": "Touca (Gorro)  cirurgica descart\xE1vel.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-241",
+      "row": 241,
+      "number": 234,
+      "name": "Tubo de L\xE1tex Natural (Garrote), resistente, ref. 200.",
+      "unit": "metro",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-242",
+      "row": 242,
+      "number": 235,
+      "name": "Tubo Hospitalar de Silicone ref. 204.",
+      "unit": "metro",
+      "initial": 0,
+      "note": "",
+      "group": "Enfermagem",
+      "category": "materials"
+    },
+    {
+      "id": "alm-248",
+      "row": 248,
+      "number": 1,
+      "name": "Agulha para Caneta de Insulina 4MM",
+      "unit": "unidade",
+      "initial": 5e3,
+      "note": "",
+      "group": "Insulino-dependentes",
+      "category": "materials"
+    },
+    {
+      "id": "alm-249",
+      "row": 249,
+      "number": 2,
+      "name": "Tiras reagentes para determina\xE7\xE3o de glicemia.",
+      "unit": "unidade",
+      "initial": 5e3,
+      "note": "",
+      "group": "Insulino-dependentes",
+      "category": "materials"
+    },
+    {
+      "id": "alm-250",
+      "row": 250,
+      "number": 3,
+      "name": "Lanceta (c/ dispositivo de seguran\xE7a) descart\xE1veis para pun\xE7\xE3o digital.",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Insulino-dependentes",
+      "category": "materials"
+    },
+    {
+      "id": "alm-251",
+      "row": 251,
+      "number": 4,
+      "name": "Lancetas (p/ lancetador) descart\xE1veis para pun\xE7\xE3o digital.",
+      "unit": "unidade",
+      "initial": 1e3,
+      "note": "",
+      "group": "Insulino-dependentes",
+      "category": "materials"
+    },
+    {
+      "id": "alm-252",
+      "row": 252,
+      "number": 5,
+      "name": "Seringa descart\xE1vel para insulina - 0,5 ml (50 UI), com agulha.",
+      "unit": "unidade",
+      "initial": 300,
+      "note": "",
+      "group": "Insulino-dependentes",
+      "category": "materials"
+    },
+    {
+      "id": "alm-253",
+      "row": 253,
+      "number": 6,
+      "name": "Seringa descart\xE1vel para insulina - 1,0 ml (100 UI), com agulha.",
+      "unit": "unidade",
+      "initial": 1e3,
+      "note": "",
+      "group": "Insulino-dependentes",
+      "category": "materials"
+    },
+    {
+      "id": "alm-259",
+      "row": 259,
+      "number": 1,
+      "name": "Bandagem de compress\xE3o el\xE1stica",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-260",
+      "row": 260,
+      "number": 2,
+      "name": "Bota de Unna com \xF3xido de Zinco",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-261",
+      "row": 261,
+      "number": 3,
+      "name": "Creme Barreira",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-262",
+      "row": 262,
+      "number": 4,
+      "name": "Curativo antimicrobiano para transfer\xEAncia de exsudato",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-263",
+      "row": 263,
+      "number": 5,
+      "name": "Curativo com 1,2% de prata i\xF4nica",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-264",
+      "row": 264,
+      "number": 6,
+      "name": "Curativo de fibras gelificantes com sulfato de prata",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-265",
+      "row": 265,
+      "number": 7,
+      "name": "Curativo de hidrofibra com alginato",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-266",
+      "row": 266,
+      "number": 8,
+      "name": "Espuma com prata, sem adesivo",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-267",
+      "row": 267,
+      "number": 9,
+      "name": "Espuma sem prata, sem adesivo",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-268",
+      "row": 268,
+      "number": 10,
+      "name": "HIDROCOL\xD3IDE em placa",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-269",
+      "row": 269,
+      "number": 11,
+      "name": "HIDROGEL amorfo",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-270",
+      "row": 270,
+      "number": 12,
+      "name": "LO\xC7\xC3O OLEOSA DERMO PROTETORA",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    },
+    {
+      "id": "alm-271",
+      "row": 271,
+      "number": 13,
+      "name": "Solu\xE7\xE3o composta de \xE1gua purificada, phmb 0,1% e derivado beta\xEDnico 0,1%",
+      "unit": "unidade",
+      "initial": 0,
+      "note": "",
+      "group": "Curativos especiais",
+      "category": "materials"
+    }
+  ];
+
   // src/domain.js
   var ROLES = { doctor: "M\xE9dico(a)", nurse: "Enfermeiro(a)", technician: "T\xE9c. de Enfermagem", assistant: "Aux. de Enfermagem", dentist: "Dentista", psychologist: "Psic\xF3logo(a)", manager: "Ger\xEAncia", productivity: "Produtividade", reception: "Recep\xE7\xE3o" };
   var STAFF = [
@@ -79,7 +2877,7 @@ var UBS = (() => {
   var nursing = (u) => ["nurse", "technician", "assistant"].includes((u == null ? void 0 : u.clinicalRole) || (u == null ? void 0 : u.role));
   var clinical = (u) => nursing(u) || ["doctor", "dentist", "psychologist"].includes(u == null ? void 0 : u.role);
   var canSeeMaterials = (u) => nursing(u) || (u == null ? void 0 : u.role) === "manager";
-  var MATERIALS = [{ id: "sonda-vesical", name: "Sonda Vesical", initial: 10, category: "materials" }];
+  var orderManager = (u) => ["heuller", "debora", "ingrid", "maria-lucia"].includes(u == null ? void 0 : u.id);
   function localDate(t = Date.now()) {
     return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(t));
   }
@@ -3655,8 +6453,94 @@ var UBS = (() => {
     }
     return p;
   }
-  function stock(u, moves = all("EstoqueMovimentos")) {
-    return (canSeeMaterials(u) ? [...BLOCKS, ...MATERIALS] : BLOCKS).map((b) => ({ ...b, quantity: moves.filter((m) => m.blockId === b.id).reduce((n, m) => n + m.delta, b.initial || 0) }));
+  function stock(u, moves = all("EstoqueMovimentos"), orders) {
+    const items = canSeeMaterials(u) ? [...BLOCKS, ...almox_default] : BLOCKS;
+    const totals = /* @__PURE__ */ new Map();
+    for (const m of moves) totals.set(m.blockId, (totals.get(m.blockId) || 0) + m.delta);
+    return items.map((b) => {
+      const i = b.category === "materials" ? almox_default.indexOf(b) : -1;
+      let n = b.initial || 0, known = i < 0 || b.initial != null || totals.has(b.id);
+      if (i >= 0) {
+        orders != null ? orders : orders = storedOrders();
+        for (const o of orders) if (o.status === "received") {
+          n += o.adjustments[i];
+          if (o.imported[i] != null) known = true;
+        }
+      }
+      return { ...b, quantity: known ? n + (totals.get(b.id) || 0) : null };
+    });
+  }
+  var orderTab = "PedidosEnfermagem";
+  function storedOrders() {
+    return db().getSheetByName(orderTab) ? all(orderTab) : [];
+  }
+  function nextCycle(day) {
+    return new Date(Date.parse(day) + 14 * 864e5).toISOString().slice(0, 10);
+  }
+  function orderView(u, id) {
+    var _a;
+    requireThat(canSeeMaterials(u), "Sem acesso aos materiais.");
+    const history = storedOrders().sort((a, b) => a.id.localeCompare(b.id));
+    const closed = history.filter((o) => o.status !== "open");
+    const latest = closed.at(-1);
+    const current = latest ? nextCycle(latest.id) : "2026-12-02";
+    const target = id || current;
+    const order = history.find((o) => o.id === target) || { id: target, status: "open", revision: 0, requested: {} };
+    requireThat(history.some((o) => o.id === target) || target === current, "Pedido desconhecido.");
+    const moves = all("EstoqueMovimentos");
+    const from = ((_a = closed.filter((o) => o.id < target).at(-1)) == null ? void 0 : _a.cutoff) || 0;
+    const usage = {};
+    for (const m of moves.slice(from)) if (["take", "correct"].includes(m.kind)) usage[m.blockId] = (usage[m.blockId] || 0) - m.delta;
+    const items = stock(u, moves, history).filter((x) => x.category === "materials");
+    return { order, items, current, latest: latest == null ? void 0 : latest.id, history: closed.map((o) => ({ id: o.id, status: o.status })), balances: order.balances || items.map((i) => i.quantity), usage: order.usage || items.map((i) => usage[i.id] || 0), cutoff: moves.length };
+  }
+  function orderAction(u, input) {
+    const view = orderView(u, input.orderId), o = view.order;
+    if (input.operation === "view") return view;
+    requireThat(orderManager(u), "Somente os quatro respons\xE1veis podem alterar pedidos.");
+    requireThat(o.revision === input.revision, "O pedido mudou. Abra novamente para conferir.");
+    const integer = (n) => Number.isSafeInteger(n) && n >= 0;
+    if (input.operation === "draft" || input.operation === "close") {
+      requireThat(o.status === "open" && o.id === view.current, "Pedido encerrado.");
+      for (const [id, n] of Object.entries(input.requested || {})) {
+        requireThat(almox_default.some((i) => i.id === id) && integer(n), "Quantidade solicitada inv\xE1lida.");
+        o.requested[id] = n;
+      }
+      if (input.operation === "close") {
+        o.status = "closed";
+        o.balances = view.balances;
+        o.usage = view.usage;
+        o.cutoff = view.cutoff;
+      }
+    } else if (input.operation === "undo") {
+      requireThat(o.status === "closed" && o.id === view.latest, "S\xF3 o \xFAltimo pedido fechado sem recebimento pode ser reaberto.");
+      o.status = "open";
+      delete o.balances;
+      delete o.usage;
+      delete o.cutoff;
+    } else if (input.operation === "receive") {
+      requireThat(["received", "closed"].includes(o.status), "Feche o pedido antes do recebimento.");
+      const rows = input.rows;
+      requireThat(Array.isArray(rows) && rows.length === almox_default.length, "Planilha incompleta.");
+      const adjustments = rows.map(([base, received], i) => {
+        var _a;
+        requireThat((base === null || integer(base)) && integer(received), "Saldo ou quantidade atendida inv\xE1lidos.");
+        requireThat(o.status !== "received" || base === o.imported[i], "Ap\xF3s receber, corrija apenas a quantidade atendida.");
+        requireThat(base !== null || received === 0, "Informe o saldo num\xE9rico do item recebido.");
+        const delta = base === null ? 0 : base + received - (o.balances[i] || 0);
+        requireThat((view.items[i].quantity || 0) + delta - (((_a = o.adjustments) == null ? void 0 : _a[i]) || 0) >= 0, "A corre\xE7\xE3o deixaria saldo negativo: " + almox_default[i].name);
+        return delta;
+      });
+      o.imported = rows.map((r) => r[0]);
+      o.received = rows.map((r) => r[1]);
+      o.adjustments = adjustments;
+      o.status = "received";
+    } else throw new Error("Opera\xE7\xE3o desconhecida.");
+    o.revision++;
+    o.updatedBy = u.id;
+    ensure(orderTab);
+    put(orderTab, o);
+    return { ok: true };
   }
   function overdue(date) {
     for (const p of patients(date)) {
@@ -3675,7 +6559,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !MATERIALS.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
@@ -3762,7 +6646,7 @@ var UBS = (() => {
   }
   function inventory(u, input) {
     requireThat(manager(u) || clinical(u), "Sem permiss\xE3o para alterar estoque.");
-    const material = MATERIALS.some((b) => b.id === input.blockId);
+    const material = almox_default.some((b) => b.id === input.blockId);
     requireThat(material ? canSeeMaterials(u) : BLOCKS.some((b) => b.id === input.blockId), "Item inv\xE1lido.");
     const key = requestKey(u, input);
     const previous = all("EstoqueMovimentos").find((m) => m.id === key);
@@ -3773,7 +6657,6 @@ var UBS = (() => {
       delta = Number(input.quantity);
       requireThat(Number.isInteger(delta) && delta > 0 && delta <= 1e5, "Quantidade inv\xE1lida.");
     } else if (input.operation === "set") {
-      requireThat(!material, "Use a reposi\xE7\xE3o de unidades.");
       requireThat(manager(u), "Somente a ger\xEAncia ajusta o saldo.");
       const n = Number(input.quantity);
       requireThat(Number.isInteger(n) && n >= 0 && n <= 1e5, "Quantidade inv\xE1lida.");
@@ -3840,6 +6723,7 @@ var UBS = (() => {
     if (input.action === "addPatients") return createPatients(u, input);
     if (input.action === "assignPaperNumbers") return assignNumbers(u, input);
     if (input.action === "patient") return mutatePatient(u, input);
+    if (input.action === "supplyOrder") return orderAction(u, input);
     if (input.action === "inventory") return inventory(u, input);
     if (input.action === "changePassword") {
       const reset = rate(u.id);
@@ -3904,7 +6788,7 @@ var UBS = (() => {
     }
   }
   function apiGet() {
-    return json({ app: "USF Nova Veneza", version: "2.10.0", ready: props().getProperty("INSTALLED") === "1" });
+    return json({ app: "USF Nova Veneza", version: "2.11.0", ready: props().getProperty("INSTALLED") === "1" });
   }
   function json(data) {
     return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
