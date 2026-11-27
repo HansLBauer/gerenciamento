@@ -6570,7 +6570,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsPatientEdit: true, supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
@@ -6617,6 +6617,52 @@ var UBS = (() => {
       }
     }
     return { patients: updates };
+  }
+  function recoverPatientMove() {
+    const raw = props().getProperty("PATIENT_MOVE");
+    if (!raw) return;
+    const { source, date, id, key } = JSON.parse(raw);
+    if (patients(date).some((p) => {
+      var _a;
+      return p.id === id && ((_a = p.applied) == null ? void 0 : _a.includes(key));
+    })) {
+      remove(source, id);
+      SpreadsheetApp.flush();
+    }
+    props().deleteProperty("PATIENT_MOVE");
+  }
+  function editPatient(u, input) {
+    const fields = patientInput(input.patient);
+    const source = patientTab(input.date), target = patientTab(fields.date);
+    const key = requestKey(u, input);
+    const destination = patients(fields.date);
+    const result = (p) => canSee(u, p) ? viewPatient(u, p) : { id: p.id, transferred: true };
+    const saved = destination.find((p) => {
+      var _a;
+      return p.id === input.id && ((_a = p.applied) == null ? void 0 : _a.includes(key));
+    });
+    if (saved) return result(saved);
+    const current = (fields.date === input.date ? destination : patients(input.date)).find((p) => p.id === input.id);
+    requireThat(current, "Atendimento n\xE3o encontrado na agenda de origem.");
+    requireThat(reception(u) || manager(u) || clinical(u) && current.professionalId === u.id, "Sem permiss\xE3o para editar esta agenda.");
+    requireThat(current.version === input.version, "O registro mudou em outro dispositivo. Atualize a lista e tente novamente.");
+    requireThat(staff().some((p) => p.id === fields.professionalId && clinical(p)), "Escolha um profissional de atendimento.");
+    const others = destination.filter((p) => p.id !== current.id);
+    validateBatchNumbers([fields], others);
+    if (current.startedAt && !current.endedAt) requireThat(!others.some((p) => p.professionalId === fields.professionalId && p.startedAt && !p.endedAt), "O profissional j\xE1 tem um atendimento em andamento nesta data.");
+    const updated = { ...current, ...fields, version: current.version + 1, applied: [...(current.applied || []).slice(-63), key] };
+    if (source === target) put(source, updated);
+    else {
+      ensure(target);
+      props().setProperty("PATIENT_MOVE", JSON.stringify({ source, date: fields.date, id: updated.id, key }));
+      put(target, updated);
+      SpreadsheetApp.flush();
+      remove(source, updated.id);
+      SpreadsheetApp.flush();
+      props().deleteProperty("PATIENT_MOVE");
+    }
+    audit(u, "editar_dados", updated.id);
+    return result(updated);
   }
   function mutatePatient(u, input) {
     const name = patientTab(input.date), p = patients(input.date).find((x) => x.id === input.id);
@@ -6694,6 +6740,7 @@ var UBS = (() => {
   function handle(input) {
     requireThat(input && typeof input.action === "string", "Requisi\xE7\xE3o inv\xE1lida.");
     requireThat(props().getProperty("INSTALLED") === "1", "O Apps Script ainda precisa ser instalado. Execute instalarSistema.");
+    recoverPatientMove();
     if (!props().getProperty("EQUIPE_2100")) {
       const existing = staff();
       for (const person of STAFF) {
@@ -6733,6 +6780,7 @@ var UBS = (() => {
     if (input.action === "dashboard") return dashboard(u, input.date || localDate());
     if (input.action === "addPatients") return createPatients(u, input);
     if (input.action === "assignPaperNumbers") return assignNumbers(u, input);
+    if (input.action === "editPatient") return editPatient(u, input);
     if (input.action === "patient") return mutatePatient(u, input);
     if (input.action === "supplyOrder") return orderAction(u, input);
     if (input.action === "inventory") return inventory(u, input);
@@ -6844,6 +6892,7 @@ var UBS = (() => {
   function cron() {
     if (props().getProperty("INSTALLED") !== "1") return;
     locked(() => {
+      recoverPatientMove();
       overdue(localDate());
       for (const s of all("Sessoes").filter((s2) => s2.expires < Date.now())) remove("Sessoes", s.id);
       const cutoff = Date.now() - 7 * 864e5;
