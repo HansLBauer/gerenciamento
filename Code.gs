@@ -3041,12 +3041,13 @@ var UBS = (() => {
     return p;
   }
   function hasProductivity(p) {
-    return Object.values(p.productivity || {}).some((v) => Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== "");
+    return Object.values(p.productivity || {}).some((v) => v && typeof v === "object" ? Object.keys(v).length > 0 : v != null && String(v).trim() !== "");
   }
   function recordProductivity(patient, raw, at) {
-    var _a;
+    var _a, _b;
     const input = { ...raw };
     for (const [key] of pecGroups) if (!(key in input) && ((_a = patient.productivity) == null ? void 0 : _a[key])) input[key] = patient.productivity[key];
+    if (!("pecResults" in input) && ((_b = patient.productivity) == null ? void 0 : _b.pecResults)) input.pecResults = patient.productivity.pecResults;
     const productivity = validProductivity(input);
     patient.productivity = productivity;
     if (!hasProductivity(patient)) return;
@@ -3055,7 +3056,7 @@ var UBS = (() => {
     patient.completion = "complete";
   }
   function validProductivity(raw = {}) {
-    var _a;
+    var _a, _b, _c, _d;
     const out = {};
     for (const [key, max] of Object.entries({ weight: 700, height: 300, pc: 100, gestWeeks: 45, gestDays: 6, previousPregnancies: 60, previousBirths: 40 })) {
       if (raw[key] !== "" && raw[key] != null) {
@@ -3090,16 +3091,30 @@ var UBS = (() => {
       requireThat(Array.isArray(raw[key]) && raw[key].every((v) => options.includes(v)), "Op\xE7\xE3o PEC inv\xE1lida.");
       out[key] = options.filter((v) => raw[key].includes(v));
     }
-    if (diabetesFields(out)) {
-      if (raw.hba1c !== "" && raw.hba1c != null) {
-        const value = Number(raw.hba1c);
-        requireThat(Number.isFinite(value) && value > 0 && value <= 100, "Informe a glicada como porcentagem entre 0 e 100, maior que zero.");
-        out.hba1c = value;
+    if (raw.pecResults != null) {
+      out.pecResults = {};
+      for (const exam of out.pecEvaluated || []) {
+        const text = String((_a = raw.pecResults[exam]) != null ? _a : "").trim();
+        requireThat(text.length <= 2e3, "Use at\xE9 2.000 caracteres por resultado.");
+        if (text) out.pecResults[exam] = text;
       }
+    }
+    let hba = raw.hba1c;
+    const result = (_b = out.pecResults) == null ? void 0 : _b[glycated];
+    if (result && /^\d+(?:[.,]\d+)?\s*%?$/.test(result)) {
+      hba = result.replace(",", ".").replace("%", "").trim();
+      delete out.pecResults[glycated];
+    }
+    if ((diabetesFields(out) || ((_c = out.pecEvaluated) == null ? void 0 : _c.includes(glycated))) && hba != null && hba !== "") {
+      const value = Number(hba);
+      requireThat(Number.isFinite(value) && value > 0 && value <= 100, "Informe a glicada como porcentagem entre 0 e 100, maior que zero.");
+      out.hba1c = value;
+    }
+    if (diabetesFields(out)) {
       if (raw.hbaRequested === true || raw.hbaRequested === "on") out.hbaRequested = true;
       if (raw.footExam === true || raw.footExam === "on") out.footExam = true;
     }
-    if ((_a = out.pecRequested) == null ? void 0 : _a.includes(glycated)) out.hbaRequested = true;
+    if ((_d = out.pecRequested) == null ? void 0 : _d.includes(glycated)) out.hbaRequested = true;
     if (Array.isArray(raw.shortcuts)) out.shortcuts = shortcuts.filter((label) => raw.shortcuts.includes(label));
     return out;
   }
@@ -6652,7 +6667,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsPec: true, supportsPatientEdit: true, supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsExamResults: true, supportsPec: true, supportsPatientEdit: true, supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
