@@ -28,12 +28,84 @@ var UBS = (() => {
     recover: () => recover
   });
 
+  // src/pec.js
+  var conditions = [
+    "Asma",
+    "Cardiopatia",
+    "Catarata",
+    "Desnutri\xE7\xE3o",
+    "Diabetes",
+    "DPOC",
+    "Hipertens\xE3o arterial",
+    "Nefropatia",
+    "Neoplasia",
+    "Obesidade",
+    "Pr\xE9-natal",
+    "Puericultura",
+    "Puerp\xE9rio (at\xE9 42 dias)",
+    "Reabilita\xE7\xE3o",
+    "Sa\xFAde mental",
+    "Sa\xFAde sexual e reprodutiva",
+    "Tabagismo",
+    "Usu\xE1rio de \xE1lcool",
+    "Usu\xE1rio de outras drogas"
+  ];
+  var infections = [
+    "Dengue",
+    "Doen\xE7a diarreica aguda",
+    "Hansen\xEDase",
+    "Hepatites A/B/C",
+    "Mal\xE1ria",
+    "S\xEDfilis feminina",
+    "S\xEDfilis masculina",
+    "S\xEDndrome respirat\xF3ria",
+    "Toxoplasmose / Tung\xEDase",
+    "Tracoma",
+    "Tuberculose"
+  ];
+  var screenings = ["C\xE2ncer do colo do \xFAtero", "C\xE2ncer de mama", "Risco cardiovascular"];
+  var glycated = "Hemoglobina glicada";
+  var exams = [
+    "Dosagem de colesterol total",
+    "Dosagem de creatinina",
+    "An\xE1lise de caracteres f\xEDsicos, elementos e sedimento da urina",
+    "Eletrocardiograma",
+    "Eletroforese de hemoglobina",
+    "Espirometria ou prova de fun\xE7\xE3o pulmonar completa com broncodilatador",
+    "Cultura s\xF3lida para micobact\xE9rias",
+    "Dosagem de glicose",
+    "Dosagem de colesterol HDL",
+    glycated,
+    "Hemograma completo",
+    "Dosagem de colesterol LDL",
+    "Sorologia de hepatite B",
+    "Sorologia de hepatite C",
+    "Sorologia de hepatite D",
+    "Teste n\xE3o trepon\xEAmico para detec\xE7\xE3o de s\xEDfilis para popula\xE7\xE3o geral (exceto gestante, parceiro ou parceira)",
+    "Pesquisa de anticorpos IgM contra arbov\xEDrus",
+    "Pesquisa laboratorial de ant\xEDgenos de HIV e/ou anticorpos anti-HIV-1 ou anti-HIV-2 para popula\xE7\xE3o geral (exceto gestante, parceiro ou parceira)",
+    "Teste indireto de antiglobulina humana (TIA)",
+    "Dosagem de gonadotrofina cori\xF4nica humana (beta-hCG)",
+    "Ultrassonografia obst\xE9trica",
+    "Cultura de bact\xE9rias para identifica\xE7\xE3o",
+    "Fundoscopia"
+  ];
+  var neonatalExams = ["Teste da orelhinha (EOA)", "Teste do olhinho (TRV)"];
+  var allExams = [...exams, ...neonatalExams];
+  var pecGroups = [
+    ["pecConditions", "Condi\xE7\xF5es avaliadas", [...conditions, ...infections]],
+    ["pecScreenings", "Rastreamentos", screenings],
+    ["pecRequested", "Exames solicitados", allExams],
+    ["pecEvaluated", "Exames avaliados", allExams]
+  ];
+
   // src/daily-care.js
   var shortcuts = ["MMG", "CO", "RX Torax AP+P", "Laboratoriais", "Renovo Receita", "ECG", "Colono", "EDA", "USG ABD Total", "USG TV", "MRPA", "Dextro", "LME"];
   var clean = (code) => String(code).replace(/[^A-Z0-9]/gi, "").toUpperCase();
   var matches = (items, pattern) => (items || []).some((item) => pattern.test(clean(item.code)));
   function diabetesFields(info) {
-    return matches(info.ciap, /^(T89|T90|W85)$/) || (info.cid || []).some((item) => {
+    var _a;
+    return ((_a = info.pecConditions) == null ? void 0 : _a.includes("Diabetes")) || matches(info.ciap, /^(T89|T90|W85)$/) || (info.cid || []).some((item) => {
       const code = clean(item.code);
       if (/^(E1[0-4]|O24|P702|N083)/.test(code)) return true;
       const label = (item.label || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -2972,7 +3044,10 @@ var UBS = (() => {
     return Object.values(p.productivity || {}).some((v) => Array.isArray(v) ? v.length > 0 : v != null && String(v).trim() !== "");
   }
   function recordProductivity(patient, raw, at) {
-    const productivity = validProductivity(raw);
+    var _a;
+    const input = { ...raw };
+    for (const [key] of pecGroups) if (!(key in input) && ((_a = patient.productivity) == null ? void 0 : _a[key])) input[key] = patient.productivity[key];
+    const productivity = validProductivity(input);
     patient.productivity = productivity;
     if (!hasProductivity(patient)) return;
     patient.status = "arrived";
@@ -2980,6 +3055,7 @@ var UBS = (() => {
     patient.completion = "complete";
   }
   function validProductivity(raw = {}) {
+    var _a;
     const out = {};
     for (const [key, max] of Object.entries({ weight: 700, height: 300, pc: 100, gestWeeks: 45, gestDays: 6, previousPregnancies: 60, previousBirths: 40 })) {
       if (raw[key] !== "" && raw[key] != null) {
@@ -3009,6 +3085,11 @@ var UBS = (() => {
       requireThat(Array.isArray(raw[key] || []) && (raw[key] || []).length <= 200, "Quantidade de c\xF3digos excedida (200 por quadro).");
       out[key] = (raw[key] || []).map((x) => ({ code: String(x.code || "").slice(0, 15), label: String(x.label || "").slice(0, 250), ...key === "ciap" && Array.isArray(x.sources) ? { sources: x.sources.filter((v) => typeof v === "string" && v.length <= 15).slice(0, 200), manual: !!x.manual } : {} }));
     }
+    for (const [key, , options] of pecGroups) {
+      if (raw[key] == null) continue;
+      requireThat(Array.isArray(raw[key]) && raw[key].every((v) => options.includes(v)), "Op\xE7\xE3o PEC inv\xE1lida.");
+      out[key] = options.filter((v) => raw[key].includes(v));
+    }
     if (diabetesFields(out)) {
       if (raw.hba1c !== "" && raw.hba1c != null) {
         const value = Number(raw.hba1c);
@@ -3018,6 +3099,7 @@ var UBS = (() => {
       if (raw.hbaRequested === true || raw.hbaRequested === "on") out.hbaRequested = true;
       if (raw.footExam === true || raw.footExam === "on") out.footExam = true;
     }
+    if ((_a = out.pecRequested) == null ? void 0 : _a.includes(glycated)) out.hbaRequested = true;
     if (Array.isArray(raw.shortcuts)) out.shortcuts = shortcuts.filter((label) => raw.shortcuts.includes(label));
     return out;
   }
@@ -6570,7 +6652,7 @@ var UBS = (() => {
     overdue(localDate());
     const list = patients(date).filter((p) => canSee(u, p)).map((p) => viewPatient(u, p));
     const notices = all("Notificacoes").filter((n) => n.userId === u.id).slice(-30).reverse();
-    return { supportsPatientEdit: true, supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
+    return { supportsPec: true, supportsPatientEdit: true, supportsAttendanceOnProductivity: true, supportsPaperFields: true, supportsDailyCare: true, supportsQueue: true, patients: list, staff: staff().filter((x) => x.role !== "reception"), stock: stock(u, moves), movements: moves.filter((m) => m.blockId !== "sonda-vesical" && (manager(u) || m.userId === u.id) && (canSeeMaterials(u) || !almox_default.some((b) => b.id === m.blockId))).slice(-100).reverse(), notifications: notices, serverTime: iso(), pushPublicKey: props().getProperty("VAPID_PUBLIC"), user: u };
   }
   function createPatients(u, input) {
     requireThat(reception(u) || manager(u) || clinical(u), "Seu perfil \xE9 somente leitura.");
